@@ -1,0 +1,176 @@
+:root {
+    --darkblue: #405965;
+    --lightteal: #7eb8b8;
+    --lightsand: #f2f4f0;
+    --darksand: #d4ccbb;
+    --darkgray: #414344;
+    --gray: #808080;
+}
+
+
+body {
+    height: 100%;
+    margin: 0;
+    /* background: #D9C3B0; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Sora', sans-serif;
+    font-size: 3em;
+    padding: 0px, 5px;
+    border-bottom: 3px dotted var(--darkblue);
+    display: flex;
+    align-items: center;
+}
+
+
+p {
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+.icon {
+    padding: 20px;
+}
+
+
+/* --HEADER-- */
+
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
+}
+
+.main-header {
+    display: flex;
+
+    background-color: var(--lightteal);
+    border-bottom: 4px solid var(--darkblue);
+    font-family: 'Quicksand', sans-serif;
+    margin: 2px, 0px;
+    width: 100%;
+
+
+
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-around;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70%;
+    flex-wrap: wrap;
+
+}
+
+
+
+header a {
+    padding: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    Text-transform: uppercase;
+    margin-left: auto;
+}
+
+.header-logo {
+    padding: 10px, 0px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: var(--lightsand);
+}
+
+/* mouse over link */
+a:hover {
+    color: #405965;
+}
+
+/* selected link */
+a:active {
+    color: gray;
+}
+
+
+i {
+    color: var(--lightsand);
+}
+
+
+
+
+/* --FOOTER-- */
+.main-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: var(--lightteal);
+    flex-wrap: wrap;
+    font-family: 'Quicksand', sans-serif;
+    height: 150px;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+
+
+/* --HOME / ABOUT--*/
+
+.home-container {
+    border: 4px solid var(--darkblue);
+    background-color: white;
+    border-radius: 10px;
+    margin: 3vh auto;
+    padding: 10px;
+    width: 80%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.container-left {
+    display: block;
+    padding: 5px;
+
+
+}
+
+.container-right {
+    display: block;
+    padding: 5px;
+
+}
+
+/* --LOGIN--*/
+/* --ADMIN--*/
+/* --DONATION RULES--*/
+/* --RESOURCES--*/
+/* --MAPS--*/
