@@ -5,43 +5,122 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- linking CSS -->
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- linking javascript -->
+    <script defer src="scripts.js"></script>
+    <!-- linking google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Quicksand&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Quicksand:wght@600&family=Sora:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- linking font awesome -->
+    <script src="https://kit.fontawesome.com/5bdef888aa.js" crossorigin="anonymous"></script>
 
-    <title>Location Map</title>
+
+    <title>Locations</title>
+
 </head>
+
 
 <body>
 
+    <!-- Scroll to top button  -->
+    <button onclick="topFunction()" class="myBtn" title="Go to top"><i class="fa-solid fa-circle-arrow-up"></i></button>
+
     <header>
         <div class="main-header">
-
 
             <div class="header-logo">
                 <a href="home.html"><img src="./images/fridgelogo.png" alt="Camberville Community Fridge Resource Logo">
                 </a>
             </div>
+            <div class="header-logo-icon">
+                <a href="home.html"><img src="./images/mobileicon.jpg"
+                        alt="Camberville Community Fridge Resource Logo"></a>
+            </div>
 
-            <div class="header-container">
-                <a href="donation rules.html">Donation Rules</a>
-                <a href="location map.html">Locations</a>
-                <a href="resources.html">Resources</a>
-                <a href="login.html">
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    &nbsp; Log In</a>
+
+            <div class="hamburger">
+                <div class="dropdown" style="float:right;">
+                    <button class="dropbtn"><i class="fas fa-bars fa-3x"></i></button>
+                    <div class="dropdown-content">
+                        <a href="home.html">About</a>
+                        <a href="location map.html">Locations</a>
+                        <a href="resources.html">Resources</a>
+                        <a href="login.html">Log In</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="home.html">About</a></li>
+                    <li><a href="location map.html">Locations</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="login.html">Log In
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        </a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <div class="home-container">
+
+        <div class="lmap-container">
+
+            <div class="location-buttons"><a href="location1.html"><button>Harvard Square</button></a></div>
+            <div class="location-buttons"><a href="location2.html"><button>The Port</button></a></div>
+            <div class="location-buttons"><a href="location3.html"><button>Riverside</button></a></div>
+            <div class="location-buttons"><a href="location4.html"><button>Union Square</button></a></div>
+            <div class="location-buttons"><a href="location5.html"><button>Winter Hill</button></a></div>
+
+        </div>
+
+    </div>
+
+    <div class="home-container">
+
+
+
+        <div class="bigmapnav1">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Qb6YHAnmIdB0EBT17204M4waQxqjHqI&ehbc=2E312F"
+                width="640" height="480"></iframe>
+        </div>
+
+        <div class="bigmapnav2">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Qb6YHAnmIdB0EBT17204M4waQxqjHqI&ehbc=2E312F"
+                width="100%" height="350"></iframe>
+        </div>
+
+    </div>
+
+
+
+
+
+    <footer>
+        <div class="main-footer">
+
+            <div class="footer-container">
+
+                <ul>
+                    <li><a href="home.html">About</a></li>
+                    <li><a href="location map.html">Locations</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+
+                </ul>
+
             </div>
 
         </div>
-    </header>
-
-
-
-
-
-
-
+    </footer>
 </body>
+
 
 </html>

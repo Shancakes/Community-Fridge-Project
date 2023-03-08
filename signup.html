@@ -18,15 +18,13 @@
     <!-- linking font awesome -->
     <script src="https://kit.fontawesome.com/5bdef888aa.js" crossorigin="anonymous"></script>
 
-
-    <title>Login</title>
+    <title>Sign Up</title>
 
 </head>
 
-
 <body>
 
-    <!-- Scroll to top button  -->
+
     <button onclick="topFunction()" class="myBtn" title="Go to top"><i class="fa-solid fa-circle-arrow-up"></i></button>
 
     <header>
@@ -79,24 +77,49 @@
 
     <div class="home-container">
 
-
         <div class="login-form-container">
+
             <form class="log-in-form">
-                <h1>Log In</h1>
 
                 <div class="login-container">
-                    <label for="uname">Username:</label>
+
+                    <label for="uname">Enter your email:</label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
+
+                    <label for="uname">Choose a username:</label>
                     <input type="text" placeholder="Enter Username" name="uname" required>
 
-                    <label for="psw">Password:</label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="psw">Choose a password:</label>
+                    <input type="text" placeholder="Enter Password" name="psw" required>
 
-                    <button type="submit">LOGIN</button>
+                    <label for="psw">Repeat your password:</label>
+                    <input type="text" placeholder="Enter Password" name="psw" required>
+
+
+                    <label for="uname">Are you a volunteer?</label>
+
+                    <div class="signup-radio">
+                        <label>
+                            <input type="radio" name="radio" />
+                            Yes, I am a volunteer.
+                        </label>
+
+                        <label>
+                            <input type="radio" name="radio" />
+                            No, I am not a volunteer.
+                        </label>
+                    </div>
 
 
 
-                    <button><a href="signup.html">SIGN UP</a>
+
+
+                    <button type="submit">SIGN UP</button>
+
+                    <p>Already have an account?</p>
+                    <button><a href="login.html">LOGIN</a></button>
                 </div>
+
             </form>
         </div>
 
@@ -105,24 +128,24 @@
 
 
 
-</body>
 
-<footer>
-    <div class="main-footer">
 
-        <div class="footer-container">
+    <footer>
+        <div class="main-footer">
 
-            <ul>
-                <li><a href="home.html">About</a></li>
-                <li><a href="location map.html">Locations</a></li>
-                <li><a href="resources.html">Resources</a></li>
+            <div class="footer-container">
 
-            </ul>
+                <ul>
+                    <li><a href="home.html">About</a></li>
+                    <li><a href="location map.html">Locations</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+
+                </ul>
+
+            </div>
 
         </div>
-
-    </div>
-</footer>
+    </footer>
 </body>
 
 
