@@ -90,6 +90,7 @@ p {
 header {
     position: sticky;
     top: 0;
+    z-index: 2;
 }
 
 .main-header {
@@ -99,6 +100,7 @@ header {
     font-family: 'Quicksand', sans-serif;
     width: 100%;
     padding-right: 2rem;
+
 }
 
 .main-header button {
@@ -111,7 +113,8 @@ header {
     display: flex;
     align-items: center;
     width: 70%;
-    margin: 10px auto;
+    margin: 10px;
+    padding: 5px;
     flex-wrap: wrap;
     font-size: 1.5rem;
 }
@@ -127,6 +130,10 @@ header nav ul {
     text-decoration: none;
     margin-left: auto;
 }
+
+/* .header-nav a:hover {
+    color: var(--darkblue);
+} */
 
 .header-logo {
     padding: 10px, 0px;
@@ -209,7 +216,7 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: var(--lightgray);
+    color: var(--darkblue);
 }
 
 /* selected link */
@@ -296,11 +303,26 @@ i {
     border-radius: 4%;
 }
 
+.center-homebtn {
+    display: flex;
+    justify-content: center;
+}
 
 .home-button {
     display: flex;
+    border: 10px solid var(--lightteal);
+    border-radius: 3%;
+    font-family: 'Sora', sans-serif;
+    background-color: var(--darkblue);
     justify-content: center;
-    width: 100%;
+    margin: auto;
+    width: 200px;
+
+}
+
+.home-button:hover {
+
+    transition-duration: 0.4s;
 
 }
 
@@ -421,31 +443,39 @@ label {
     justify-content: space-around;
     margin: auto;
     width: 100%;
-    padding: 2%;
+    justify-content: center;
+
 }
 
 
 
 .lmap-container button {
+
     background-color: var(--darkblue);
     border: none;
     color: white;
-    width: 15rem;
+    width: 200px;
     height: 10rem;
-    padding: 3rem;
+    padding: 2.5rem;
     text-align: center;
     font-family: 'Sora', sans-serif;
     font-size: 30px;
     display: inline-block;
     border-radius: 3%;
-    margin: 15px 5px;
+    margin: 5px;
     transition-duration: 0.4s;
+    display: flex;
+    justify-content: center;
 }
 
 .lmap-container button:hover {
     background-color: var(--lightteal);
     border-color: var(--darkblue);
     color: var(--darkblue);
+    /* display: flex;
+    justify-content: center; */
+
+
 }
 
 .bigmapnav1,
@@ -520,46 +550,53 @@ label {
 
 
 
-/* location Bar */
-
 .location-container {
     background-color: var(--lightsand);
     position: sticky;
     top: 0;
     width: 100%;
-    height: 110px;
+    height: 115px;
     display: flex;
     justify-content: center;
-
-
-}
-
-.location-bar-l {
-    display: flex;
-    align-items: center;
     flex-wrap: wrap;
+    z-index: 2;
 
 }
+
+
 
 .location-container ul {
-    list-style-type: none;
+    /* list-style-type: none; */
     display: flex;
     justify-content: space-between;
     justify-content: center;
     flex-wrap: wrap;
-    margin: auto;
+    /* margin: auto; */
 
 }
 
 .location-container li {
+    display: flex;
+}
+
+.location-container a {
     margin: 5px;
     padding: 10px 30px;
     background-color: var(--darkblue);
     border: 2px solid var(--darkblue);
     border-radius: 3%;
     font-family: 'Quicksand', sans-serif;
+    width: 100%;
 
 }
+
+.location-container a:hover {
+    background-color: var(--lightteal);
+    border-color: var(--lightteal);
+    color: var(--darkblue);
+    transition-duration: 0.4s;
+}
+
 
 
 /* Posts */
@@ -704,28 +741,37 @@ label {
 /* ************************************************************ */
 
 /* For extremely small screen devices (595px and below) */
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 600px) {
 
     .bigmapnav1,
     .header-nav,
     .header-logo,
-    .container-right,
     .map-l {
         display: none;
-    }
-
-    .location-bar-l li {
-        width: 70%;
-
     }
 
     .location-container {
         height: fit-content;
         position: static;
+        margin: auto;
     }
 
     .flinks td {
         display: flex;
+    }
+
+    .location-container ul {
+        justify-content: center;
+        width: auto;
+        margin-right: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    location-container li {
+        width: 100%;
+
     }
 
 }
@@ -736,17 +782,13 @@ label {
     .bigmapnav1,
     .hamburger,
     .header-logo,
-    .container-right,
     .map-s {
         display: none;
     }
 
     .header-nav {
         width: 100%;
-
     }
-
-
 }
 
 /* Medium screen devices (768px to 899px) */
@@ -762,7 +804,6 @@ label {
 
     .header-nav {
         width: 100%;
-
     }
 }
 
