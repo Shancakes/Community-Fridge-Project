@@ -810,6 +810,7 @@ label {
 /* Big screen devices (900px to 1100 px) */
 @media only screen and (min-width: 900px) and (max-width: 1199px) {
 
+
     .bigmapnav2,
     .hamburger,
     .header-logo-icon,
