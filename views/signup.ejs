@@ -1,0 +1,61 @@
+<%- include('partials/head') -%>
+    <%- include('partials/header') -%>
+
+
+
+
+
+        <div class="home-container">
+
+            <div class="login-form-container">
+
+                <form class="log-in-form">
+
+                    <div class="login-container">
+
+                        <label for="uname">Enter your email:</label>
+                        <input type="text" placeholder="Enter Email" name="email" required>
+
+                        <label for="uname">Choose a username:</label>
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+
+                        <label for="psw">Choose a password:</label>
+                        <input type="text" placeholder="Enter Password" name="psw" required>
+
+                        <label for="psw">Repeat your password:</label>
+                        <input type="text" placeholder="Enter Password" name="psw" required>
+
+
+                        <label for="uname">Are you a volunteer?</label>
+
+                        <div class="signup-radio">
+                            <label>
+                                <input type="radio" name="radio" />
+                                Yes, I am a volunteer.
+                            </label>
+
+                            <label>
+                                <input type="radio" name="radio" />
+                                No, I am not a volunteer.
+                            </label>
+                        </div>
+
+
+
+
+
+                        <button type="submit">SIGN UP</button>
+
+                        <p>Already have an account?</p>
+                        <button><a href="login">LOGIN</a></button>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+
+        <%- include('partials/footer') -%>

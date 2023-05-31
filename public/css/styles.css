@@ -18,6 +18,7 @@ body {
     height: 100%;
     margin: 0;
     overflow-x: hidden;
+    background-color: var(--darkblue);
 }
 
 body a {
@@ -208,10 +209,9 @@ header nav ul {
 /* ************************************************************ */
 
 a:link {
-    color: var(--darksand);
+    color: var(--lightsand);
     text-decoration: none;
     font-weight: bold;
-
 }
 
 /* visited link */
@@ -278,7 +278,6 @@ i {
 /* *******************--HOME / ABOUT-- **************************/
 /* ************************************************************ */
 
-
 .home-container {
     border: 4px solid var(--darkblue);
     background-color: white;
@@ -289,68 +288,33 @@ i {
     display: flex;
 }
 
-.container-left {
+.home-content p {
     display: block;
-    padding: 20px;
+    padding: 40px 20px;
     width: 80%;
     margin: auto;
-}
-
-.container-right {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-
-}
-
-.container-right img {
-    border-radius: 4%;
-}
-
-.center-homebtn {
-    display: flex;
-    justify-content: center;
+    font-size: 1.2rem;
 }
 
 .home-button {
     display: flex;
-    border: 10px solid var(--lightteal);
+    border: 3px solid var(--lightteal);
     border-radius: 3%;
     font-size: larger;
     font-family: 'Sora', sans-serif;
-    background-color: var(--darkblue);
+    background-color: var(--lightteal);
     justify-content: center;
     margin: auto;
     width: 200px;
-
+    padding: 5px;
 }
 
 .home-button:hover {
+    border: 3px solid var(--darkblue);
     transition-duration: 0.4s;
 
 }
 
-.container-left button {
-    padding: 15px 10px;
-    font-family: 'Sora', sans-serif;
-    background-color: var(--lightsand);
-    color: var(--darkblue);
-    border: none;
-    opacity: 0.9;
-    margin: 10px;
-
-}
-
-.container-left button a {
-    color: var(--darkblue);
-}
-
-
-.container-left button:hover {
-    opacity: 1;
-    background-color: var(--lightsand);
-    box-shadow: 0px 0px 0px 2px var(--darkblue) inset;
-}
 
 .homeicon {
     margin: auto;
@@ -358,9 +322,13 @@ i {
     justify-content: center;
 }
 
-.mobile-home-img {
-    width: auto;
+
+
+.home-content h1 img {
+    max-width: 600px;
+    margin: auto;
 }
+
 
 
 /* ************************************************************ */
@@ -478,6 +446,7 @@ label {
     text-decoration: none;
 }
 
+
 .bigmapnav1,
 .bigmapnav2 {
     margin: auto;
@@ -560,6 +529,7 @@ label {
     justify-content: center;
     flex-wrap: wrap;
     z-index: 2;
+    cursor: pointer;
 }
 
 
@@ -569,13 +539,12 @@ label {
     justify-content: space-between;
     justify-content: center;
     flex-wrap: wrap;
-
-
 }
 
 .location-container li {
     display: flex;
     align-items: center;
+
 }
 
 .location-container a {
@@ -584,10 +553,9 @@ label {
     background-color: var(--darkblue);
     border: 2px solid var(--darkblue);
     border-radius: 3%;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', sans-srif;
     width: 100%;
     text-decoration: none;
-
 }
 
 .location-container a:hover {
@@ -769,20 +737,24 @@ label {
 
     location-container li {
         width: 100%;
-
+        margin: 50px;
     }
 
     .footer-container ul {
         display: flex;
         flex-direction: column;
-        margin: auto;
-        font-size: 1.5rem;
-        padding: 10px;
+        /* justify-content: center; */
+        font-size: 2rem;
+        padding: 40px;
 
     }
 
     .main-footer {
         height: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        margin: auto;
     }
 }
 
@@ -803,13 +775,18 @@ label {
     .footer-container ul {
         display: flex;
         flex-direction: column;
-        margin: auto;
-        padding: 10px;
-        font-size: 1.5rem;
+        /* justify-content: center; */
+        font-size: 2rem;
+        padding: 40px;
+
     }
 
     .main-footer {
         height: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        margin: auto;
     }
 }
 
@@ -826,6 +803,23 @@ label {
 
     .header-nav {
         width: 100%;
+    }
+
+    .footer-container ul {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        font-size: 2rem;
+        padding: 40px;
+
+    }
+
+    .main-footer {
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        margin: auto;
     }
 }
 

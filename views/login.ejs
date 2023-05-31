@@ -1,129 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- linking CSS -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- linking javascript -->
-    <script defer src="scripts.js"></script>
-    <!-- linking google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Quicksand:wght@600&family=Sora:wght@700&display=swap"
-        rel="stylesheet">
-    <!-- linking font awesome -->
-    <script src="https://kit.fontawesome.com/5bdef888aa.js" crossorigin="anonymous"></script>
+<%- include('partials/head') -%>
+    <%- include('partials/header') -%>
 
 
-    <title>Login</title>
 
-</head>
-
-
-<body>
-
-    <!-- Scroll to top button  -->
-    <button onclick="topFunction()" class="myBtn" title="Go to top"><i class="fa-solid fa-circle-arrow-up"></i></button>
-
-    <header>
-        <div class="main-header">
-
-            <div class="header-logo">
-                <a href="home.html"><img src="./images/fridgelogo.png" alt="Camberville Community Fridge Resource Logo">
-                </a>
-            </div>
-            <div class="header-logo-icon">
-                <a href="home.html"><img src="./images/mobileicon.jpg"
-                        alt="Camberville Community Fridge Resource Logo"></a>
-            </div>
+        <div class="home-container">
 
 
-            <div class="hamburger">
-                <div class="dropdown" style="float:right;">
-                    <button class="dropbtn"><i class="fas fa-bars fa-3x"></i></button>
-                    <div class="dropdown-content">
-                        <a href="home.html">About</a>
-                        <a href="location map.html">Locations</a>
-                        <a href="resources.html">Resources</a>
-                        <a href="login.html">Log In</a>
+            <div class="login-form-container">
+                <form class="log-in-form">
+                    <h1>Log In</h1>
+
+                    <div class="login-container">
+                        <label for="uname">Username:</label>
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+
+                        <label for="psw">Password:</label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                        <button type="submit">LOGIN</button>
+
+
+
+                        <button><a href="signup">SIGN UP</a>
                     </div>
-                </div>
+                </form>
             </div>
 
 
-            <nav class="header-nav">
-                <ul>
-                    <li><a href="home.html">About</a></li>
-                    <li><a href="location map.html">Locations</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="login.html">Log In
-                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        </a></li>
-                </ul>
-            </nav>
-
-        </div>
-
-    </header>
-
-
-
-
-
-
-
-
-    <div class="home-container">
-
-
-        <div class="login-form-container">
-            <form class="log-in-form">
-                <h1>Log In</h1>
-
-                <div class="login-container">
-                    <label for="uname">Username:</label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-
-                    <label for="psw">Password:</label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                    <button type="submit">LOGIN</button>
-
-
-
-                    <button><a href="signup.html">SIGN UP</a>
-                </div>
-            </form>
         </div>
 
 
-    </div>
 
-
-
-</body>
-
-<footer>
-    <div class="main-footer">
-
-        <div class="footer-container">
-
-            <ul>
-                <li><a href="home.html">About</a></li>
-                <li><a href="location map.html">Locations</a></li>
-                <li><a href="resources.html">Resources</a></li>
-
-            </ul>
-
-        </div>
-
-    </div>
-</footer>
-</body>
-
-
-</html>
+        </body>
+        <%- include('partials/footer') -%>

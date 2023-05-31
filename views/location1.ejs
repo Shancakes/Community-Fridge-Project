@@ -1,77 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- linking CSS -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- linking javascript -->
-    <script defer src="scripts.js"></script>
-    <!-- linking google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Quicksand:wght@600&family=Sora:wght@700&display=swap"
-        rel="stylesheet">
-    <!-- linking font awesome -->
-    <script src="https://kit.fontawesome.com/5bdef888aa.js" crossorigin="anonymous"></script>
-
-
-    <title>Fridge In The Square - Cambridge</title>
-
-</head>
-
-
-<body>
-
-    <!-- Scroll to top button  -->
-    <button onclick="topFunction()" class="myBtn" title="Go to top"><i class="fa-solid fa-circle-arrow-up"></i></button>
-
-    <header>
-        <div class="main-header">
-
-            <div class="header-logo">
-                <a href="home.html"><img src="./images/fridgelogo.png" alt="Camberville Community Fridge Resource Logo">
-                </a>
-            </div>
-            <div class="header-logo-icon">
-                <a href="home.html"><img src="./images/mobileicon.jpg"
-                        alt="Camberville Community Fridge Resource Logo"></a>
-            </div>
-
-
-            <div class="hamburger">
-                <div class="dropdown" style="float:right;">
-                    <button class="dropbtn"><i class="fas fa-bars fa-3x"></i></button>
-                    <div class="dropdown-content">
-                        <a href="home.html">About</a>
-                        <a href="location map.html">Locations</a>
-                        <a href="resources.html">Resources</a>
-                        <a href="login.html">Log In</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <nav class="header-nav">
-                <ul>
-                    <li><a href="home.html">About</a></li>
-                    <li><a href="location map.html">Locations</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="login.html">Log In
-                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        </a></li>
-                </ul>
-            </nav>
-
-        </div>
-
-    </header>
-
-    <%- include('../partials/location-nav') -%>
-
+<%- include('partials/head') -%>
+    <%- include('partials/header') -%>
 
         <div class="map-container">
             <h2>Fridge in the Square (Harvard Square, Cambridge) </h2>
@@ -132,7 +60,8 @@
                 </h3>
                 <li>Fresh produce</li>
                 <li>Dairy products (cheese milk eggs)</li>
-                <li>Prepared packaged meals from commercial kitchens with ingredients, allergens, date, clearly
+                <li>Prepared packaged meals from commercial kitchens with ingredients, allergens, date,
+                    clearly
                     listed</li>
                 <li>Cleaning supplies</li>
                 <li>Mentstrual products</li>
@@ -177,14 +106,19 @@
                 <div class="post-container">
                     <h3>Gabriel</h3>
 
-                    <p>I have updated the fridge with some new items! Lots of fresh produce, get it before it is gone!
+                    <p>I have updated the fridge with some new items! Lots of fresh produce, get it before
+                        it is
+                        gone!
                         The
                         pantry could use some shelves cleaned. </p>
                 </div>
                 <div class="post-container">
 
                     <h3>Naomi</h3>
-                    <p>Hi everyone, could I request some eggs for our next donation? I noticed it keeps flying off the
+                    <p>Hi everyone, could I request some eggs for our next donation? I noticed it keeps
+                        flying
+                        off
+                        the
                         shelves, and I could use some for my cake recipe Thank you!</p>
                 </div>
             </div>
@@ -198,27 +132,6 @@
 
 
 
-</body>
+        </body>
 
-
-
-<footer>
-    <div class="main-footer">
-
-        <div class="footer-container">
-
-            <ul>
-                <li><a href="home.html">About</a></li>
-                <li><a href="location map.html">Locations</a></li>
-                <li><a href="resources.html">Resources</a></li>
-
-            </ul>
-
-        </div>
-
-    </div>
-</footer>
-</body>
-
-
-</html>
+        <%- include('partials/footer') -%>

@@ -2,9 +2,11 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+// const routes = require('./routes/index')
 
 //Static Files
 app.use(express.static('public'))
+// app.use(routes);
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/css', express.static(__dirname + 'public/js'))
 app.use('/css', express.static(__dirname + 'public/img'))
@@ -22,6 +24,49 @@ app.get('', (req, res) => {
 app.get('/home', (req, res) => {
     res.render('home')
 })
+
+app.get('/location-map', (req, res) => {
+    res.render('location-map')
+})
+
+app.get('/location1', (req, res) => {
+    res.render('location1')
+})
+
+app.get('/location2', (req, res) => {
+    res.render('location2')
+})
+
+app.get('/location3', (req, res) => {
+    res.render('location3')
+})
+
+app.get('/location4', (req, res) => {
+    res.render('location4')
+})
+
+app.get('/location5', (req, res) => {
+    res.render('location5')
+})
+
+app.get('/location6', (req, res) => {
+    res.render('location6')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.get('/signup', (req, res) => {
+    res.render('signup')
+})
+
+app.get('/resources', (req, res) => {
+    res.render('resources')
+})
+
+
+
 
 
 //Port
