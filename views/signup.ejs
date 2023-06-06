@@ -1,5 +1,5 @@
 <%- include('partials/head') -%>
-    <%- include('partials/header') -%>
+    <%- include('partials/nav') -%>
 
 
 
@@ -8,49 +8,44 @@
         <div class="home-container">
 
             <div class="login-form-container">
+                <main>
+                    <form action="/register" method="POST" class="log-in-form">
 
-                <form class="log-in-form">
+                        <div class="login-container">
 
-                    <div class="login-container">
+                            <label for="uname">Enter your email:</label>
+                            <input type="text" placeholder="Enter Email" name="email" required>
 
-                        <label for="uname">Enter your email:</label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
+                            <label for="uname">Choose a username:</label>
+                            <input type="text" placeholder="Enter Username" name="uname" required>
 
-                        <label for="uname">Choose a username:</label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
+                            <label for="psw">Choose a password:</label>
+                            <input type="text" placeholder="Enter Password" name="psw" required>
 
-                        <label for="psw">Choose a password:</label>
-                        <input type="text" placeholder="Enter Password" name="psw" required>
+                            <label for="uname">Are you a volunteer?</label>
 
-                        <label for="psw">Repeat your password:</label>
-                        <input type="text" placeholder="Enter Password" name="psw" required>
+                            <div class="signup-radio">
+                                <label>
+                                    <input type="radio" name="radio" />
+                                    Yes, I am a volunteer.
+                                </label>
+
+                                <label>
+                                    <input type="radio" name="radio" />
+                                    No, I am not a volunteer.
+                                </label>
+                            </div>
 
 
-                        <label for="uname">Are you a volunteer?</label>
 
-                        <div class="signup-radio">
-                            <label>
-                                <input type="radio" name="radio" />
-                                Yes, I am a volunteer.
-                            </label>
+                            <button type="submit">SIGN UP</button>
 
-                            <label>
-                                <input type="radio" name="radio" />
-                                No, I am not a volunteer.
-                            </label>
+                            <p>Already have an account?</p>
+                            <button><a href="login">LOGIN</a></button>
                         </div>
 
-
-
-
-
-                        <button type="submit">SIGN UP</button>
-
-                        <p>Already have an account?</p>
-                        <button><a href="login">LOGIN</a></button>
-                    </div>
-
-                </form>
+                    </form>
+                </main>
             </div>
 
 

@@ -1,0 +1,31 @@
+<%- include('partials/head') -%>
+    <%- include('partials/nav') -%>
+
+        <section class="location1" id="location1">
+            <div class="home-container">
+
+                <div class="home-content">
+
+                    <h2>User Posts</h2>
+                    <p>Listings of all posts in //////location</p>
+                </div>
+
+                <div class="home-content">
+                    <!-- //to loop the array and display each book -->
+                    <% for (post of inventoryArray) { %>
+                        <a href='/posts/<%= post._id %>'>
+                            <h3>
+                                <%= post.user %>
+                            </h3>
+                            <p>
+                                <%= post.volunteer %>
+                            </p>
+                            <p>
+                                <%= post.postText %>
+                            </p>
+
+                        </a>
+                        <% } %>
+                </div>
+            </div>
+        </section>

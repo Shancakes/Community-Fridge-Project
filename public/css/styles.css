@@ -572,12 +572,9 @@ label {
 
 .textbox {
     resize: none;
-    margin-right: 50%;
-    width: 100%;
+    width: 97%;
     height: 200px;
-    margin: auto;
     display: flex;
-    margin: 2px auto;
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -594,10 +591,12 @@ label {
     padding: 1rem;
 }
 
-#name {
+#name,
+.name {
     margin: 2px auto;
     font-family: 'Quicksand', sans-serif;
-    width: 50%;
+    width: 90%;
+    max-width: 400px;
 }
 
 .submit {
@@ -616,7 +615,9 @@ label {
     border-color: var(--lightteal);
 }
 
-
+#post-list {
+    margin-top: 20px;
+}
 
 
 
@@ -755,6 +756,31 @@ label {
         flex-direction: column;
 
         margin: auto;
+    }
+
+    #name,
+    .name {
+        width: 99%;
+    }
+
+    #post-list {
+        margin-top: 20px;
+    }
+
+    .post {
+        border: 1px solid #9c1919;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .post h2 {
+        margin-bottom: 5px;
+    }
+
+    .post p {
+        margin-bottom: 5px;
+        font-style: italic;
+        font-size: 12px;
     }
 }
 
