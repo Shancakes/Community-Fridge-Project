@@ -1,14 +1,52 @@
 
+<h1>Community Fridge Project</h1>
 
-<h1> Project Name and Pitch </h1>
+Camberville Community Fridge Project offers an interactive forum where in real time volunteers can update information about individual sites and others can provide feedback to help maintain these valuable fridge resources that many families depend on.
 
-Camberville Community Fridge Resource
+<h2>Languages:</h2>
+-CSS <br>
+-HTML <br>
+-Javascript <br>
+-Node <br>
+-MongoDB <br>
+-EJS <br>
+-Express <br>
 
-An application used to locate and maintain community fridges in the Cambridge/Somerville area.
 
-<h1>Project Status</h1>
+<h2>Project Status:</h2>
 
-Currently in development. Front end work is now functional. Users can navigate through links to find resources. Maps and addresses are provided to locate the fridges. Information on donation is also given. The forum posting and login/sign up forms are still in progress.
+This project is currently in development. 
 
-<h1>Project Screen Shots</h1>
-Screen shots are provided in the image folder.
+
+<h2>Screenshots:</h2>
+
+![cfridge-scrnsht-2](https://github.com/Shancakes/Community-Fridge-Project/assets/115766756/cd5aae64-5ebe-4fd2-a687-9864fc55a976)
+
+![cfridge-scrnsht-3](https://github.com/Shancakes/Community-Fridge-Project/assets/115766756/e0684b93-6d27-451c-9650-0d57c75ffe9a)
+
+![cfridge-scrnsht-4](https://github.com/Shancakes/Community-Fridge-Project/assets/115766756/b62f2193-fb16-42e0-8c71-00713430f869)
+
+
+<h2>Installation and Setup Instructions:</h2>
+
+Clone this repository. You will need node and npm installed globally on your machine.
+
+Installation:
+
+npm install
+
+To Run Test Suite:
+
+npm test
+
+To Start Server:
+
+npm start
+
+To Visit App:
+
+localhost:3000/home
+
+
+
+
