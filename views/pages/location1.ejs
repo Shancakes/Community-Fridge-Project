@@ -1,20 +1,20 @@
-<%- include('partials/head') -%>
-    <%- include('partials/nav') -%>
-        <%- include('partials/location-nav') -%>
+<%- include('../partials/head') -%>
+    <%- include('../partials/nav') -%>
+        <%- include('../partials/location-nav') -%>
 
             <div class="map-container">
-                <h1>Somerville Community Fridge<br>Winter Hill (Somerville)</h1>
+                <h1>Fridge in the Square <br>(Harvard Square, Cambridge) </h1>
 
                 <div class="map-l">
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.622096201626!2d-71.0921617!3d42.3931963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370d430054995%3A0xee64f20c04bcbe26!2s36%20Sewall%20St%2C%20Somerville%2C%20MA%2002145!5e0!3m2!1sen!2sus!4v1678245061188!5m2!1sen!2sus"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11790.598645264765!2d-71.11632!3d42.371305!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775cb73212b9%3A0xfe6ae67495c50864!2sThe%20Democracy%20Center!5e0!3m2!1sen!2sus!4v1678095563802!5m2!1sen!2sus"
                         width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="map-s">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.622096201626!2d-71.0921617!3d42.3931963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370d430054995%3A0xee64f20c04bcbe26!2s36%20Sewall%20St%2C%20Somerville%2C%20MA%2002145!5e0!3m2!1sen!2sus!4v1678245061188!5m2!1sen!2sus"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11790.598645264765!2d-71.11632!3d42.371305!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775cb73212b9%3A0xfe6ae67495c50864!2sThe%20Democracy%20Center!5e0!3m2!1sen!2sus!4v1678095563802!5m2!1sen!2sus"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -22,15 +22,13 @@
 
 
 
-
-
                 <div class="fridge-content">
                     <h2>Location Information:</h2>
                     <p>
-                        <a href="https://goo.gl/maps/6Upo5zZrCupXsXPy7" style="color: #405965"><i
-                                class="fa-solid fa-location-dot" style="color: #405965"></i>&nbsp; 36 Sewall St,
-                            Somerville,
-                            MA 02145</a>
+                        <a href="https://goo.gl/maps/pzKcic4NtE5pSXVM6" style="color: #405965"><i
+                                class="fa-solid fa-location-dot" style="color: #405965"></i> &nbsp; 45
+                            Mt Auburn St,
+                            Cambridge, MA 02138</a>
                     </p>
                     <p></p>
 
@@ -38,14 +36,15 @@
                     <p>
                     <table class="flinks">
                         <tr>
-                            <td><a href=" https://www.instagram.com/cambridgefridge/">Instagram <i
+                            <td><a href=" https://www.instagram.com/cambridgefridge/">Instagram &nbsp;<i
                                         class="fa-brands fa-instagram"></i></a></td>
 
-                            <td><a href="mailto: cambridgecommunityfridge@gmail.com">Email
+                            <td><a href="mailto: cambridgecommunityfridge@gmail.com">Email &nbsp;
                                     <i class="fa-regular fa-envelope"></i></a>
                             </td>
-                            <td><a href="https://linktr.ee/CambridgeFridge">Linktree <i
-                                        class="fa-solid fa-link"></i></i></i></a></td>
+                            <td><a href="https://linktr.ee/CambridgeFridge">Linktree &nbsp;<i
+                                        class="fa-solid fa-link"></i></a>
+                            </td>
                         </tr>
 
 
@@ -60,29 +59,66 @@
                     </h3>
                     <li>Fresh produce</li>
                     <li>Dairy products (cheese milk eggs)</li>
-                    <li>Prepared packaged meals from commercial kitchens with ingredients, allergens, date, clearly
+                    <li>Prepared packaged meals from commercial kitchens with ingredients, allergens, date,
+                        clearly
                         listed</li>
-                    <li>Pantry Itema and </li>
                     <li>Cleaning supplies</li>
-                    <li>Hygene Products</li>
-
+                    <li>Mentstrual products</li>
+                    <li>Paper bags</li>
+                    <li>Sanitizer</li>
 
                     <h3><b>Not Allowed:</b>
                     </h3>
                     <li>Raw meat and seafood</li>
                     <li>Alcohol</li>
                     <li>Unlabeled or opened meals</li>
-                    <li>Medicine</li>
-
+                    <li>Homemade meals or baked goods</li>
+                    <li>Leftovers</li>
+                    <li>Prepared and packaged foods that do not follow food donation guidelines</li>
                 </ul>
                 </p>
+            </div>
+            </div>
             </div>
 
 
 
+
+
+            <!-- /////////////////// -->
+            <!-- <div class="home-container"> -->
+
             <div class="map-container">
-                <h1>Update And Feedback About This Fridge:</h1>
-                <form id="post-form">
+                <%- include('../pages/postcreate') -%>
+
+                    <!-- /////////////////////// -->
+
+            </div>
+
+
+            <!-- 
+            <div class="map-container">
+                <main>
+                    <form action="/post" method="POST" id="post-form" class="post-form">
+                        <h3>Update And Feedback About This Fridge:</h3>
+                        <div class="name"><input type=" text" id="name" name="name" placeholder="Your name">
+                        </div>
+                        <div>
+                            <textarea type="text" id="subject" name="subject" placeholder="Write something..."
+                                class="textbox" required /></textarea>
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit" class="submit">
+                        </div>
+                    </form>
+                </main>
+            </div>
+ -->
+            <div class="map-container">
+
+                <h1>Updates And Feedback About This Fridge:</h1>
+
+                <!-- <form id="post-form" method="POST" action="/add/postloc1">
                     <label for="name" class="name">Name </label>
                     <br>
                     <input type="text" id="name" name="name" class="name" required>
@@ -99,12 +135,14 @@
                         <br>
                         <textarea id="content" name="content" class="textbox" required></textarea>
                     </p>
-                    <button type="submit" id="submit-post" class="submit">Submit Post</button>
-                </form>
+                    <input type="submit" id="submit-post" class="submit" value="Submit Post">
 
-                <div id="post-listing">
-                    <p id="post-listing"></p>
+                </form> -->
+
+                <div id="post-list">
+
                 </div>
+
 
 
             </div>
@@ -117,7 +155,8 @@
                     <div class="post-container">
                         <h3>Gabriel, Volunteer</h3>
 
-                        <p><a href="/post"></a>I have updated the fridge with some new items! Lots of fresh produce, get
+                        <p><a href="/post"></a>I have updated the fridge with some new items! Lots of fresh produce,
+                            get
                             it before
                             it is
                             gone!
@@ -139,4 +178,4 @@
 
             </body>
 
-            <%- include('partials/footer') -%>
+            <%- include('../partials/footer') -%>

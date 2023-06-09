@@ -1,76 +1,85 @@
 
-// // const siteData = require('../data/siteData');
-// const postData = require('../data/postData');
+// const { name } = require('ejs');
+const Post = require('../data/siteData');
 
-// module.exports = {
-//     all_post: (request, response) => {
-//         Post.find({}, (error, allPost) => {
-//             if (error) {
-//                 return error;
-//             } else {
-//                 response.render('views/post', {
-//                     copyrightYear: siteData.year,
-//                     inventoryArray: allPosts
-//                 });
-//             }
-//         })
-//     },
-//     post_detail: (request, response) => {
-//         const { _id } = request.params;
-//         Post.findOne({ _id: _id }, (error, foundPost) => {
-//             if (error) {
-//                 return error;
-//             } else {
-//                 response.render('pages/postDetail', {
-//                     copyrightYear: siteData.year,
-//                     inventoryItem: foundPost
-//                 });
-//             }
-//         })
-//     },
-//     post_create_post: (request, response) => {
-//         const { title, author, price, starRating, synopsis } = request.body;
-//         const newPost = new Post({
-//             title: title,
-//             author: author,
-//             price: price,
-//             starRating: starRating,
-//             synopsis: synopsis
-//         });
+module.exports = {
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+    // Is the request supposed to be read? or is this ok? //
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+    all_post: (request, response) => {
+        Post.find({}, (error, allPosts) => {
+            if (error) {
+                return error;
+            } else {
+                response.render('pages/posts', {
+                    // copyrightYear: Data.year,
+                    inventoryArray: allPosts
+                });
+            }
+        })
+    },
 
-//         newPost.save();
+    post_detail: (request, response) => {
+        const { _id } = request.params;
+        Post.findOne({ _id: _id }, (error, foundPosts) => {
+            if (error) {
+                return error;
+            } else {
+                response.render('pages/postDetail', {
 
-//         response.redirect("/admin/admin-posts");
-//     },
-//     post_update_put: (request, response) => {
-//         const { _id } = request.params;
+                });
+            }
+        })
+    },
+    post_create_post: (request, response) => {
+        const { name, rad1, rad2, content } = request.body;
+        const newPost = new Post({
+            name: name,
+            rad1: rad1,
+            rad2: rad2,
+            // date: date,
+            content: content
+        });
 
-//         const { title, author, price, starRating, synopsis } = request.body;
+        newPost.save();
 
-//         Post.findByIdAndUpdate(_id, {
-//             $set: {
-//                 title: title,
-//                 author: author,
-//                 price: price,
-//                 starRating: starRating,
-//                 synopsis: synopsis
-//             }
-//         }, { new: true }, error => {
-//             if (error) {
-//                 return error;
-//             } else {
-//                 response.redirect('/admin/admin-posts');
-//             }
-//         })
-//     },
-//     post_delete: (request, response) => {
-//         const { _id } = request.params;
-//         Post.deleteOne({ _id: _id }, error => {
-//             if (error) {
-//                 return error;
-//             } else {
-//                 response.redirect('/admin/admin-posts')
-//             }
-//         });
-//     }
-// }
+        //redirects to alert the creator your post has been made
+
+        //!!!!!!!!!!!!!!!!!!!!!!
+        // is this how you both give an alert the post was made and refresh the page?
+        //!!!!!!!!!!!!!!!!!!!
+        response.redirect("/admin/admin-posts");
+        response.alert('Your post has been made!');
+    },
+    post_update_put: (request, response) => {
+        const { _id } = request.params;
+
+        const { name, rad1, rad2, content } = request.body;
+
+        Post.findByIdAndUpdate(_id, {
+            $set: {
+                name: name,
+                rad1: rad1,
+                rad2: rad2,
+                // date: date,
+                content: content
+            }
+        }, { new: true }, error => {
+            if (error) {
+                return error;
+            } else {
+                response.redirect('/admin/admin-posts');
+            }
+        })
+    },
+    post_delete: (request, response) => {
+        const { _id } = request.params;
+        Post.deleteOne({ _id: _id }, error => {
+            if (error) {
+                return error;
+            } else {
+                response.redirect('/admin/admin-posts')
+            }
+        });
+    }
+}

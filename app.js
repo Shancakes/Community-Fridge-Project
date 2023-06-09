@@ -1,35 +1,70 @@
-// require('dotenv').config();
-// const morgan = require('morgan');
-// const methodOverride = require('method-override');
-// const session = require('express-session');
-// const passport = require('passport');
-
-
+require('dotenv').config();
 const express = require('express');
-const app = express();
-const path = require('path');
-const indexRouter = require('./routes/indexRoutes');
-const PORT = 3000;
-// const mongoose = require('mongoose')
-// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-// const db = mongoose.connection
-// db.on('error', error => console.error(error))
-// db.once('open', () => console.log('Connected to Mongoose'))
+const session = require('express-session');
+const passport = require('passport');
+const app = express()
 
+//Port 3000
+const PORT = process.env.PORT || 3000;
 
+//Morgan
+const morgan = require('morgan');
+app.use(morgan('dev'));
 
+//Adding path module and EJS to app.js
+const path = require('node:path');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
-
-app.set('views', __dirname + '/views')
-app.set('partials', 'partials/partials')
 app.set('view engine', 'ejs');
 
+//Requiring Method Override
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
+//Adding functionality to app.js
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false
+}));
+
+//Initialize Passport
+app.use(passport.initialize());
+//Passport use session
+app.use(passport.session());
+
+const indexRoutes = require('./routes/indexRoutes');
+app.use('/', indexRoutes);
+
+
+// require('./connection/connection');
+//
+//??? I can run the server without it, but not with it
+
+
+
+
+//Server
 app.listen(PORT, () => {
     console.log(`The server is listening on port ${PORT}`);
 });
 
 
+// app.use(session({
+//     secret: process.env.SECRET_KEY,
+//     resave: false,
+//     saveUninitialized: false
+// }));
+
+// app.set('views', __dirname + '/views')
+// app.set('partials', 'partials/partials')
+
+
+
+
+//////////////////////////////////////////////////////////////////////
 
 
 
@@ -80,8 +115,6 @@ app.listen(PORT, () => {
 // })
 
 // app.get('/post', (req, res) => {
-//     res.render('post', {
-//         title: "Postings",
-//     });
+//     res.render('post');
 // })
 

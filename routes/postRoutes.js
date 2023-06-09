@@ -1,20 +1,15 @@
+const express = require('express');
+const postController = require('../controller/postController');
+const router = express.Router();
 
+// // POST ROUTES
+router.route('/')
+    .get(postController.all_post)
+    .post(postController.post_create_post)
 
-// const express = require("express");
-// const postController = require('../controller/postController'); //linking the controller
-// const router = express.Router();
-// // const postController = require("../controllers/post-controller");
+router.route('/:_id')
+    .get(postController.post_detail)
+    .put(postController.post_update_put)
+    .delete(postController.post_delete)
 
-// router.route("/")
-//     .get(postController.allPosts)
-//     .post(postController.postCreate);
-
-
-// // //method override in app.js
-// router.route("/:_id")
-//     .get(postController.postGet)
-//     .put(postController.postUpdate)
-//     .delete(postController.postDelete);
-
-
-// module.exports = router;
+module.exports = router;

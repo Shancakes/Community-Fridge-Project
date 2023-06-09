@@ -1,0 +1,38 @@
+<!-- <%- include('../partials/head') -%>
+    <%- include('../partials/nav') -%>
+
+ -->
+
+<div class="home-container">
+
+
+    <div class="map-container">
+        <section class="main-content" id="main-content">
+            <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
+            <% for (post of inventoryArray) { %>
+
+                <div class="post-container">
+
+                    <a href="/views/pages/posts <%= post._id %>" class="box">
+
+                        <h4>
+                            <%= post.name %>
+                        </h4>
+                        <p>
+                            <%= post.rad1 %>
+                                <br>
+                                <%= post.rad2 %>
+                        </p>
+                        <p>
+                            <%= post.content %>
+                        </p>
+                    </a>
+                    <% }%>
+                </div>
+
+    </div>
+
+
+
+
+    </section>

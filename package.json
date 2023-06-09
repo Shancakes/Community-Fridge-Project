@@ -7,7 +7,8 @@
     "express-ejs-layouts": "2.5.1",
     "express-session": "^1.17.3",
     "method-override": "^3.0.0",
-    "mongodb": "^5.5.0",
+    "mongo": "^0.1.0",
+    "mongodb": "^5.6.0",
     "mongoose": "^7.2.2",
     "mongoose-findorcreate": "^4.0.0",
     "morgan": "^1.10.0",
@@ -29,5 +30,5 @@
   "devDependencies": {
     "nodemon": "^2.0.22"
   },
-  "description": "<h1> Project Name and Pitch </h1>"
+  "description": "<h1> Camberville Fridge Resource </h1>"
 }
