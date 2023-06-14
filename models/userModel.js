@@ -16,7 +16,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: [true, "A password is required"],
-        minlength: [8, "Password must be at least 8 characters long"],
+        minlength: [4, "Password must be at least 4 characters long"],
         maxlength: [16, "Password must be less than 16 characters long"]
     },
     googleId: {

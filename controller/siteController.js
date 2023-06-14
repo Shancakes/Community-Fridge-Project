@@ -7,7 +7,7 @@ module.exports = {
 
     home_get: (request, response) => {
         response.render('pages/home', {
-            signedIn: siteData.signedIn,
+
         });
     },
 
@@ -74,7 +74,7 @@ module.exports = {
 
     signup_get: (request, response) => {
         response.render('pages/signup', {
-            signedIn: siteData.signedIn,
+            // signedIn: siteData.signedIn,
         });
     },
 
