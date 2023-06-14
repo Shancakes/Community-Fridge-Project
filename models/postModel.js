@@ -18,9 +18,11 @@ const postSchema = new Schema({
     rad2: {
         type: String,
     },
-    // date: {
-    //     type: Date,
-    // },
+    date: {
+        type: Date,
+        default: () => new Date()
+    },
+
     content: {
         type: String,
         required: [true, 'Text is required.'],

@@ -1,21 +1,20 @@
 
 // const { name } = require('ejs');
-const Post = require('../data/siteData');
+const Post = require('../models/postModel');
 
 module.exports = {
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
-    // Is the request supposed to be read? or is this ok? //
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+
     all_post: (request, response) => {
         Post.find({}, (error, allPosts) => {
             if (error) {
                 return error;
             } else {
                 response.render('pages/posts', {
-                    // copyrightYear: Data.year,
                     inventoryArray: allPosts
                 });
             }
+
+
         })
     },
 
@@ -26,49 +25,44 @@ module.exports = {
                 return error;
             } else {
                 response.render('pages/postDetail', {
-
+                    inventoryItem: foundPosts
                 });
             }
         })
     },
     post_create_post: (request, response) => {
-        const { name, rad1, rad2, content } = request.body;
+        const { name, rad1, rad2, date, content } = request.body;
         const newPost = new Post({
             name: name,
             rad1: rad1,
             rad2: rad2,
-            // date: date,
+            date: date,
             content: content
         });
 
         newPost.save();
 
-        //redirects to alert the creator your post has been made
+        response.redirect("/location1");
 
-        //!!!!!!!!!!!!!!!!!!!!!!
-        // is this how you both give an alert the post was made and refresh the page?
-        //!!!!!!!!!!!!!!!!!!!
-        response.redirect("/admin/admin-posts");
-        response.alert('Your post has been made!');
     },
     post_update_put: (request, response) => {
         const { _id } = request.params;
 
-        const { name, rad1, rad2, content } = request.body;
+        const { name, rad1, rad2, date, content } = request.body;
 
         Post.findByIdAndUpdate(_id, {
             $set: {
                 name: name,
                 rad1: rad1,
                 rad2: rad2,
-                // date: date,
+                date: date,
                 content: content
             }
         }, { new: true }, error => {
             if (error) {
                 return error;
             } else {
-                response.redirect('/admin/admin-posts');
+                response.redirect('/location1');
             }
         })
     },
@@ -78,8 +72,9 @@ module.exports = {
             if (error) {
                 return error;
             } else {
-                response.redirect('/admin/admin-posts')
+                response.redirect('/posts')
             }
         });
     }
+
 }

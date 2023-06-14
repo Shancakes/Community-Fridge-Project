@@ -10,9 +10,11 @@ const siteController = require('../controller/siteController'); //linking the co
 router.route('/')
     .get(siteController.home_get);
 
+router.route('/home')
+    .get(siteController.home_get);
+
 router.route("/locationMap")
     .get(siteController.locationMap_get);
-
 
 router.route("/resources")
     .get(siteController.resources_get)
@@ -49,11 +51,13 @@ router.route("/location1")
 //     .get(siteController.location5_get)
 //     .post(siteController.location5_post);
 
-router.route('/auth/google')
-    .get(siteController.google_get);
 
-router.route('/auth/google/admin')
-    .get(siteController.google_redirect_get);
+
+// router.route('/auth/google')
+//     .get(siteController.google_get);
+
+// router.route('/auth/google/admin')
+//     .get(siteController.google_redirect_get);
 
 
 module.exports = router;

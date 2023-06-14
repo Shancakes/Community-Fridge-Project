@@ -84,65 +84,10 @@
 
 
 
-
-            <!-- /////////////////// -->
-            <!-- <div class="home-container"> -->
-
-            <div class="map-container">
-                <%- include('../pages/postcreate') -%>
-
-                    <!-- /////////////////////// -->
-
-            </div>
-
-
-            <!-- 
-            <div class="map-container">
-                <main>
-                    <form action="/post" method="POST" id="post-form" class="post-form">
-                        <h3>Update And Feedback About This Fridge:</h3>
-                        <div class="name"><input type=" text" id="name" name="name" placeholder="Your name">
-                        </div>
-                        <div>
-                            <textarea type="text" id="subject" name="subject" placeholder="Write something..."
-                                class="textbox" required /></textarea>
-                        </div>
-                        <div>
-                            <input type="submit" value="Submit" class="submit">
-                        </div>
-                    </form>
-                </main>
-            </div>
- -->
             <div class="map-container">
 
                 <h1>Updates And Feedback About This Fridge:</h1>
-
-                <!-- <form id="post-form" method="POST" action="/add/postloc1">
-                    <label for="name" class="name">Name </label>
-                    <br>
-                    <input type="text" id="name" name="name" class="name" required>
-                    <p>
-                        <input type="radio" id="volunteer" name="role" value="volunteer" checked>
-                        <label for="volunteer">Volunteer:</label>
-
-                        <br>
-                        <input type="radio" id="community-member" name="role" value="community-member">
-                        <label for="community-member">Community Member</label>
-                    </p>
-                    <p>
-                        <label for="content">Content</label>
-                        <br>
-                        <textarea id="content" name="content" class="textbox" required></textarea>
-                    </p>
-                    <input type="submit" id="submit-post" class="submit" value="Submit Post">
-
-                </form> -->
-
-                <div id="post-list">
-
-                </div>
-
+                <%- include('../pages/postcreate') -%>
 
 
             </div>
@@ -150,32 +95,35 @@
 
             <div class="map-container">
 
+                <section class="main-content" id="main-content">
 
-                <div class="forum-posts">
-                    <div class="post-container">
-                        <h3>Gabriel, Volunteer</h3>
+                    <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
+                    <% for (post of inventoryArray) { %>
 
-                        <p><a href="/post"></a>I have updated the fridge with some new items! Lots of fresh produce,
-                            get
-                            it before
-                            it is
-                            gone!
-                            The
-                            pantry could use some shelves cleaned. </p>
-                    </div>
-                    <div class="post-container">
+                        <div class="post-container">
 
-                        <h3>Naomi, Community Member</h3>
-                        <p>Hi everyone, could I request some eggs for our next donation? I noticed it keeps
-                            flying
-                            off
-                            the
-                            shelves, and I could use some for my cake recipe Thank you!</p>
-                    </div>
-                </div>
+                            <a href="/views/pages/posts <%= post._id %>" class="box">
+                            </a>
+                            <h4>
+                                <%= post.name %>
+                            </h4>
+                            <br>
+                            <%= post.rad1 %>
+                                <%= post.rad2 %>
+                                    <%= post.date %>
+                                        <p>
+                                            <%= post.content %>
+                                        </p>
+                                        </a>
+                        </div>
+                        <% } %>
+            </div>
+            </div>
+            </section>
+
+
             </div>
 
 
-            </body>
 
             <%- include('../partials/footer') -%>

@@ -2,7 +2,19 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
+const passportLocalMongoose = require('passport-local-mongoose');
 const app = express()
+
+
+
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Port 3000
 const PORT = process.env.PORT || 3000;
@@ -39,7 +51,7 @@ const indexRoutes = require('./routes/indexRoutes');
 app.use('/', indexRoutes);
 
 
-// require('./connection/connection');
+require('./config/connection');
 //
 //??? I can run the server without it, but not with it
 

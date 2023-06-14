@@ -1,38 +1,40 @@
-<!-- <%- include('../partials/head') -%>
+<%- include('../partials/head') -%>
     <%- include('../partials/nav') -%>
 
- -->
 
-<div class="home-container">
-
-
-    <div class="map-container">
         <section class="main-content" id="main-content">
-            <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
-            <% for (post of inventoryArray) { %>
+            <div class="home-container">
 
-                <div class="post-container">
 
-                    <a href="/views/pages/posts <%= post._id %>" class="box">
+                <!-- <div class="map-container"> -->
+                <div class="map-container">
+                    <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
+                    <% for (post of inventoryArray) { %>
 
-                        <h4>
-                            <%= post.name %>
-                        </h4>
-                        <p>
+                        <div class="post-container">
+
+                            <a href="/views/pages/posts <%= post._id %>" class="box">
+                            </a>
+                            <h4>
+                                <%= post.name %>
+                            </h4>
+                            <br>
                             <%= post.rad1 %>
-                                <br>
                                 <%= post.rad2 %>
-                        </p>
-                        <p>
-                            <%= post.content %>
-                        </p>
-                    </a>
-                    <% }%>
+                                    <%= post.date %>
+                                        <p>
+                                            <%= post.content %>
+                                        </p>
+                                        </a>
+                        </div>
+                        <% } %>
                 </div>
 
-    </div>
+            </div>
 
 
 
 
-    </section>
+        </section>
+
+        <%- include('../partials/footer') -%>

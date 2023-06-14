@@ -1,5 +1,5 @@
-// const User = require('../models/userModel');
-// const siteData = require('../data/siteData');
+const User = require('../models/userModel');
+const Post = require('../models/postModel');
 const passport = require('passport');
 
 
@@ -7,6 +7,7 @@ module.exports = {
 
     home_get: (request, response) => {
         response.render('pages/home', {
+            signedIn: siteData.signedIn,
         });
     },
 
@@ -23,55 +24,41 @@ module.exports = {
 
 
     location1: (request, response) => {
-        response.render('pages/location1', {
-            // name: siteData.userName,
-            // signedIn: siteData.signedIn,
-            // postData: postData
-        });
+        Post.find({}, (error, allPosts) => {
+            if (error) {
+                return error;
+            } else {
+                response.render('pages/location1', {
+                    inventoryArray: allPosts
+                });
+            }
+        })
 
     },
 
     location2: (request, response) => {
         response.render('pages/location2', {
-            // name: siteData.userName,
-            // signedIn: siteData.signedIn,
-            // postData: postData
         });
     },
 
     location3: (request, response) => {
         response.render('pages/location2', {
-            // name: siteData.userName,
-            // signedIn: siteData.signedIn,
-            // postData: postData
         });
     },
 
     location4: (request, response) => {
         response.render('pages/location2', {
-            // name: siteData.userName,
-            // signedIn: siteData.signedIn,
-            // postData: postData
         });
     },
 
     location5: (request, response) => {
         response.render('pages/location2', {
-            // name: siteData.userName,
-            // signedIn: siteData.signedIn,
-            // postData: postData
         });
     },
 
 
-    resources_get: (request, response) => {
-        response.render('pages/resources', {
-        });
-    },
-
-    // insert post method, "location1_post"
     location1_post: (request, response) => {
-        const { name, rad1, rad2, content } = request.body;
+        const { name, content } = request.body;
         const newPost = new Post({
             name: name,
             rad1: rad1,
@@ -87,49 +74,48 @@ module.exports = {
 
     signup_get: (request, response) => {
         response.render('pages/signup', {
-            // copyrightYear: siteData.year
+            signedIn: siteData.signedIn,
         });
     },
 
     signup_post: (request, response) => {
         const { username, password } = request.body;
-        User.register({ username: username }, password, (error, user) => {
-            if (error) {
-                console.log(error);
-                response.redirect('/signup');
-            } else {
-                passport.authenticate('local')(request, response, () => {
-                    response.redirect('/login');
-                });
-            }
+        const newUser = new User({
+            username: username,
+            password: password
         });
+        newUser.save();
+        response.redirect('/login');
+
     },
 
     login_get: (request, response) => {
         response.render('pages/login', {
-            // copyrightYear: siteData.year
+
         });
     },
 
     login_post: (request, response) => {
-        const { username, password, googleId } = request.body;
+        const { username, password } = request.body;
         const user = new User({
             username: username,
             password: password,
-            googleId: googleId
         });
 
         request.login(user, (error) => {
             if (error) {
-                console.log(error)
-                response.redirect('/login');
+                console.log(error);
+                response.redirect("/login");
             } else {
-                passport.authenticate('local')(request, response, () => {
-                    response.redirect('/admin');
+                passport.authenticate("local")(request, response, () => {
+                    response.redirect("/locationMap");
                 });
             }
         });
     },
+
+
+
 
     logout: (request, response) => {
         // new code as of 6/2022 - the correct logout function
@@ -139,13 +125,8 @@ module.exports = {
             // redirect back to the homepage
             response.redirect('/');
         });
-    },
+    }
 
-    google_get: passport.authenticate('google', { scope: ['openid', 'profile', 'email'] }),
-    google_redirect_get: [
-        passport.authenticate('google', { failureRedirect: '/login' }),
-        function (request, response) {
-            response.redirect('/admin');
-        }
-    ]
+
+
 }
