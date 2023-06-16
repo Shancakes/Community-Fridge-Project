@@ -1,39 +1,20 @@
 <%- include('../partials/head') -%>
     <%- include('../partials/nav') -%>
 
-
-
-
-
         <div class="home-container">
 
             <div class="login-form-container">
                 <main>
+                    <!-- figure out action to the form -->
                     <form action="/signup" method="POST" class="log-in-form">
                         <h1>Sign Up</h1>
                         <div class="login-container">
 
                             <label for="username">Choose a username:</label>
-                            <input type="text" placeholder="Enter Username" name="username" required>
+                            <input type="text" placeholder="Enter Username" name="username" required />
 
                             <label for="password">Choose a password:</label>
-                            <input type="password" placeholder="Enter Password" name="password" required>
-
-                            <!-- <label for="uname">Are you a volunteer?</label> -->
-
-                            <!-- <div class="signup-radio">
-                                <label>
-                                    <input type="radio" name="radio" />
-                                    Yes, I am a volunteer.
-                                </label>
-
-                                <label>
-                                    <input type="radio" name="radio" />
-                                    No, I am not a volunteer.
-                                </label>
-                            </div> -->
-
-
+                            <input type="password" placeholder="Enter Password" name="password" required />
 
                             <input type="submit" value="SIGN UP" class="">
 
@@ -41,7 +22,7 @@
                             </h1>
 
                             <p>Already have an account?</p>
-                            <button><a href="login">LOGIN</a></button>
+                            <button><a href="/login">LOGIN</a></button>
                         </div>
 
                     </form>

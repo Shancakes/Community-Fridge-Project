@@ -1,3 +1,4 @@
+//DO NOT TOUCH (unless youre adding more locations)
 const User = require('../models/userModel');
 const Post = require('../models/postModel');
 const passport = require('passport');
@@ -7,7 +8,7 @@ module.exports = {
 
     home_get: (request, response) => {
         response.render('pages/home', {
-
+            // signedIn: siteData.signedIn,
         });
     },
 
@@ -21,19 +22,19 @@ module.exports = {
         });
     },
 
-
-
     location1: (request, response) => {
-        Post.find({}, (error, allPosts) => {
-            if (error) {
-                return error;
-            } else {
-                response.render('pages/location1', {
-                    inventoryArray: allPosts
-                });
-            }
-        })
-
+        response.render('pages/location1', {
+        }); //failsafe
+        // Post.find({}, (error, inventoryArray) => {
+        //     if (error) {
+        //         return error;
+        //     } else {
+        //         response.render('pages/location1', {
+        //             inventoryArray: inventoryArray
+        //         });
+        //     }
+        // })
+        //location1-loop is connected here, come back when mongoDB is connected
     },
 
     location2: (request, response) => {
@@ -56,7 +57,7 @@ module.exports = {
         });
     },
 
-
+    //MVP for all locations
     location1_post: (request, response) => {
         const { name, content } = request.body;
         const newPost = new Post({
@@ -74,32 +75,53 @@ module.exports = {
 
     signup_get: (request, response) => {
         response.render('pages/signup', {
-            // signedIn: siteData.signedIn,
+
         });
     },
 
-    signup_post: (request, response) => {
-        const { username, password } = request.body;
-        const newUser = new User({
-            username: username,
-            password: password
-        });
-        newUser.save();
-        response.redirect('/login');
+    //Not the best, because we don't have salry hashbrowns
+    //nobody wants over salty hashbrowns
+    // signup_post: (request, response) => {
+    //     const { username, password } = request.body;
+    //     const newUser = new User({
+    //         username: username,
+    //         password: password
+    //     });
+    //     newUser.save();
+    //     response.redirect('/login');
 
+    // },
+
+    signup_post: (request, response) => {
+        // added in Code Along - differs from slides
+        const { username, password } = request.body;
+        User.register({ username: username }, password, (error, user) => {
+            if (error) {
+                console.log(error);
+                response.redirect('/signup');
+                // check the routes folder to check --> siteRouter --> redirect trigger --> GET
+            } else {
+                // if they are successful 
+                passport.authenticate('local')(request, response, () => {
+                    response.redirect('/login');
+                    // you created your account --> login --> GET
+                });
+            };
+        });
     },
 
     login_get: (request, response) => {
         response.render('pages/login', {
-
         });
     },
 
     login_post: (request, response) => {
-        const { username, password } = request.body;
+        googleId = request.body.googleId;
+        const { username, password, googleId } = request.body;
         const user = new User({
             username: username,
             password: password,
+            googleId: googleId
         });
 
         request.login(user, (error) => {
@@ -114,9 +136,6 @@ module.exports = {
         });
     },
 
-
-
-
     logout: (request, response) => {
         // new code as of 6/2022 - the correct logout function
         request.logout(function (err) {
@@ -125,8 +144,16 @@ module.exports = {
             // redirect back to the homepage
             response.redirect('/');
         });
-    }
+    },
 
+    google_get: passport.authenticate('google', { scope: ['openid', 'profile', 'email'] }),
 
-
+    google_redirect_get: [
+        passport.authenticate('google', { failureRedirect: '/ login' }),
+        function (request, response) {
+            // Successful Authentication Authorization
+            response.redirect('/admin');
+        }
+    ]
 }
+

@@ -4,6 +4,7 @@ const router = express.Router();
 const siteController = require('../controller/siteController'); //linking the controller
 
 
+//User
 
 
 //Site Routes
@@ -28,8 +29,8 @@ router.route("/login")
     .get(siteController.login_get)
     .post(siteController.login_post);
 
-router.route("/logout")
-    .get(siteController.logout)
+// router.route("/logout")
+//     .get(siteController.logout)
 
 router.route("/location1")
     .get(siteController.location1)

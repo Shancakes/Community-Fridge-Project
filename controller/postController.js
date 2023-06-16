@@ -2,6 +2,7 @@
 // const { name } = require('ejs');
 const Post = require('../models/postModel');
 
+
 module.exports = {
 
     all_post: (request, response) => {
@@ -66,6 +67,8 @@ module.exports = {
             }
         })
     },
+
+
     post_delete: (request, response) => {
         const { _id } = request.params;
         Post.deleteOne({ _id: _id }, error => {

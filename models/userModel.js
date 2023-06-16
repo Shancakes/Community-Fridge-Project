@@ -1,10 +1,11 @@
+//DO NOT TOUCH
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
 const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongooseFindOrCreate = require('mongoose-findorcreate');
 
+const { Schema } = mongoose;
 const userSchema = new Schema({
     username: {
         type: String,
@@ -30,12 +31,6 @@ const User = mongoose.model('User', userSchema);
 
 passport.use(User.createStrategy());
 
-// async function runUsers() {
-//     await mongoose.connect(`${process.env.MONGODB_URL}`)
-//     mongoose.model('Users', userSchema);
-//     await mongoose.model('Users').find();
-// }
-// runUsers();
 
 passport.serializeUser(function (user, cb) {
     process.nextTick(function () {
@@ -49,13 +44,24 @@ passport.deserializeUser(function (user, cb) {
     });
 });
 
+// Configure Google OAuth
+// passport.use(new GoogleStrategy({
+//     clientID: 'your-client-id',
+//     clientSecret: 'your-client-secret',
+//     callbackURL: '/auth/google/callback'
+// }, (accessToken, refreshToken, profile, done) => {
+//     // This function is called when the user is authenticated
+//     // You can perform additional actions here, such as saving the user to a database
+//     return done(null, profile);
+// }));
+
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/locationMap"
 },
-    function (accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({ googleID: profile.id }, function (err, user) {
+    function (accessToken, refreshToken, email, cb) {
+        User.findOrCreate({ googleID: email.id }, function (err, user) {
             return cb(err, user);
         });
     }));

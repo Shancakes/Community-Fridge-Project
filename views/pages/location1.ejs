@@ -1,3 +1,5 @@
+<!-- MVP template for other locations without posts -->
+
 <%- include('../partials/head') -%>
     <%- include('../partials/nav') -%>
         <%- include('../partials/location-nav') -%>
@@ -87,7 +89,7 @@
             <div class="map-container">
 
                 <h1>Updates And Feedback About This Fridge:</h1>
-                <%- include('../pages/postcreate') -%>
+                <%- include('../partials/postcreate') -%>
 
 
             </div>
@@ -95,32 +97,8 @@
 
             <div class="map-container">
 
-                <section class="main-content" id="main-content">
-
-                    <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
-                    <% for (post of inventoryArray) { %>
-
-                        <div class="post-container">
-
-                            <a href="/views/pages/posts <%= post._id %>" class="box">
-                            </a>
-                            <h4>
-                                <%= post.name %>
-                            </h4>
-                            <br>
-                            <%= post.rad1 %>
-                                <%= post.rad2 %>
-                                    <%= post.date %>
-                                        <p>
-                                            <%= post.content %>
-                                        </p>
-                                        </a>
-                        </div>
-                        <% } %>
-            </div>
-            </div>
-            </section>
-
+                <!-- //include the partial -->
+                <%# include('../partials/location1-loop') -%>
 
             </div>
 

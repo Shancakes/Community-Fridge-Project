@@ -1,9 +1,6 @@
-
+//DONT TOUCH (for now, without consulting a TF first about radio buttons)
 const mongoose = require("mongoose");
-
-
 const { Schema } = mongoose;
-
 const postSchema = new Schema({
 
     name: {
@@ -12,6 +9,8 @@ const postSchema = new Schema({
         min: [2, 'Please type your full name.'],
         max: [100, 'Please use less than 100 characters.']
     },
+    //change the key to another key, if not using radio buttons.
+    //Kits rec is to use a textarea and have the user type in the info instead.
     rad1: {
         type: String,
     },
@@ -20,7 +19,7 @@ const postSchema = new Schema({
     },
     date: {
         type: Date,
-        default: () => new Date()
+        // default: () => new Date()
     },
 
     content: {

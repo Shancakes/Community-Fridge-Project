@@ -1,12 +1,8 @@
+//DONT TOUCH (without further learning!!)
+let date = new Date();
 
-const { v4: uuid } = require('uuid');
-// let date = new Date();
-
-module.exports = [
-    {
-        _id: uuid(),
-
-        signedIn: true,
-
-    }
-]
+module.exports = {
+    userName: 'CodeSquader',
+    year: date.getFullYear(),
+    signedIn: true
+}

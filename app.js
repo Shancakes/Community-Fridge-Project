@@ -1,3 +1,4 @@
+//DONT TOUCH
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
@@ -6,15 +7,6 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const app = express()
 
 
-
-app.use(session({
-    secret: process.env.SECRET_KEY,
-    resave: false,
-    saveUninitialized: false
-}))
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Port 3000
 const PORT = process.env.PORT || 3000;
@@ -47,30 +39,19 @@ app.use(passport.initialize());
 //Passport use session
 app.use(passport.session());
 
+
+
 const indexRoutes = require('./routes/indexRoutes');
 app.use('/', indexRoutes);
 
 
 require('./config/connection');
-//
-//??? I can run the server without it, but not with it
-
-
 
 
 //Server
 app.listen(PORT, () => {
+    console.log(`http://localhost:${PORT}`);
     console.log(`The server is listening on port ${PORT}`);
 });
-
-
-// app.use(session({
-//     secret: process.env.SECRET_KEY,
-//     resave: false,
-//     saveUninitialized: false
-// }));
-
-// app.set('views', __dirname + '/views')
-// app.set('partials', 'partials/partials')
 
 
