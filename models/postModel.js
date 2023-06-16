@@ -9,14 +9,7 @@ const postSchema = new Schema({
         min: [2, 'Please type your full name.'],
         max: [100, 'Please use less than 100 characters.']
     },
-    //change the key to another key, if not using radio buttons.
-    //Kits rec is to use a textarea and have the user type in the info instead.
-    rad1: {
-        type: String,
-    },
-    rad2: {
-        type: String,
-    },
+
     date: {
         type: Date,
         // default: () => new Date()

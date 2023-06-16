@@ -82,19 +82,19 @@ module.exports = {
     //Not the best, because we don't have salry hashbrowns
     //nobody wants over salty hashbrowns
     // signup_post: (request, response) => {
-    //     const { username, password } = request.body;
-    //     const newUser = new User({
-    //         username: username,
-    //         password: password
-    //     });
-    //     newUser.save();
-    //     response.redirect('/login');
+
 
     // },
 
     signup_post: (request, response) => {
         // added in Code Along - differs from slides
         const { username, password } = request.body;
+        const newUser = new User({
+            username: username,
+            password: password
+        });
+        newUser.save();
+        response.redirect('/login');
         User.register({ username: username }, password, (error, user) => {
             if (error) {
                 console.log(error);
@@ -115,18 +115,49 @@ module.exports = {
         });
     },
 
-    login_post: (request, response) => {
+    login_post: (request, response, next) => {
+        passport.authenticate('local', (err, user, info) => {
+            if (err) {
+                console.error(err);
+                return next(err);
+            }
 
-        googleId = request.body.googleId;
-        const { username, password, googleId } = request.body;
-        const user = new User({
-            username: username,
-            password: password,
-            googleId: googleId
-        });
+            if (!user) {
+                console.log(info.message);
+                return response.redirect('/locationMap');
+            }
 
+            request.logIn(user, async (err) => {
+                if (err) {
+                    console.error(err);
+                    return next(err);
+                }
 
+                try {
+                    const { username } = user;
+
+                    // Update the logged-in user's posts with the associated username
+                    await Post.updateMany({ userId: user._id }, { $set: { username } });
+
+                    return response.redirect('/locationMap');
+                } catch (error) {
+                    console.error(error);
+                    return next(error);
+                }
+            });
+        })(request, response, next);
     },
+
+    // googleId = request.body.googleId;
+    // const { username, password, googleId } = request.body;
+    // const user = new User({
+    //     username: username,
+    //     password: password,
+    //     googleId: googleId
+    //     });
+
+
+    // },
 
     logout: (request, response) => {
         // new code as of 6/2022 - the correct logout function
