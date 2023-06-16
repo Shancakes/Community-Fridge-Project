@@ -116,6 +116,7 @@ module.exports = {
     },
 
     login_post: (request, response) => {
+
         googleId = request.body.googleId;
         const { username, password, googleId } = request.body;
         const user = new User({
@@ -124,16 +125,7 @@ module.exports = {
             googleId: googleId
         });
 
-        request.login(user, (error) => {
-            if (error) {
-                console.log(error);
-                response.redirect("/login");
-            } else {
-                passport.authenticate("local")(request, response, () => {
-                    response.redirect("/locationMap");
-                });
-            }
-        });
+
     },
 
     logout: (request, response) => {
