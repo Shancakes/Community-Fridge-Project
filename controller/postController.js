@@ -2,11 +2,11 @@
 // const { name } = require('ejs');
 const Post = require('../models/postModel');
 
-
 module.exports = {
 
+
     all_post: (request, response) => {
-        Post.find({}, (error, allPosts) => {
+        Post.find({}).sort({ date: -1 }).exec((error, allPosts) => {
             if (error) {
                 return error;
             } else {
@@ -14,9 +14,8 @@ module.exports = {
                     inventoryArray: allPosts
                 });
             }
-
-
         })
+
     },
 
     post_detail: (request, response) => {
@@ -31,31 +30,24 @@ module.exports = {
             }
         })
     },
+
     post_create_post: (request, response) => {
-        const { name, rad1, rad2, date, content } = request.body;
+        const { name, date, content } = request.body;
         const newPost = new Post({
             name: name,
-            rad1: rad1,
-            rad2: rad2,
             date: date,
             content: content
         });
-
         newPost.save();
-
         response.redirect("/location1");
 
     },
     post_update_put: (request, response) => {
         const { _id } = request.params;
-
-        const { name, rad1, rad2, date, content } = request.body;
-
+        const { name, date, content } = request.body;
         Post.findByIdAndUpdate(_id, {
             $set: {
                 name: name,
-                rad1: rad1,
-                rad2: rad2,
                 date: date,
                 content: content
             }
@@ -67,7 +59,6 @@ module.exports = {
             }
         })
     },
-
 
     post_delete: (request, response) => {
         const { _id } = request.params;
