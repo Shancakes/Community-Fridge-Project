@@ -1,25 +1,30 @@
 <section class="main-content" id="main-content">
+    <div class="home-container">
 
-    <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
-    <% for (post of inventoryArray) { %>
 
-        <div class="post-container">
+        <!-- <div class="map-container"> -->
+        <div class="map-container">
+            <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
 
-            <a href="/views/pages/posts <%= post._id %>" class="box">
-            </a>
-            <h4>
+            <% inventoryArray.forEach(post=> { %>
 
-                <%= post.name %>
-            </h4>
-            <br>
+                <div class="post-container">
 
-            <%= post.date %>
-                <p>
-                    <%= post.content %>
-                </p>
-                </a>
+                    <a href="/views/pages/posts <%= post._id %>" class="box">
+                    </a>
+                    <h4>
+                        <%= post.name %>
+                    </h4>
+                    <br>
+
+                    <%= post.date %>
+                        <p>
+                            <%= post.content %>
+                        </p>
+                        </a>
+                </div>
+                <% }) %>
         </div>
-        <% } %>
 
-
+    </div>
 </section>

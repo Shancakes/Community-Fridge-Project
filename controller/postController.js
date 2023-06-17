@@ -4,7 +4,7 @@ const Post = require('../models/postModel');
 
 module.exports = {
 
-
+    //I have the post array going to pages/posts, but I also want it to show on pages/location1
     all_post: (request, response) => {
         Post.find({}).sort({ date: -1 }).exec((error, allPosts) => {
             if (error) {
@@ -17,6 +17,36 @@ module.exports = {
         })
 
     },
+    // all_post: (request, response) => {
+    //     Post.find({}).sort({ date: -1 }).exec((error, allPosts) => {
+    //         if (error) {
+    //             return error;
+    //         } else {
+    //             const inventoryArray = [];
+
+    //             // Populate inventoryArray with the necessary data
+    //             allPosts.forEach(post => {
+    //                 // Customize the data you want to include in the inventoryArray
+    //                 const postData = {
+    //                     name: post.name,
+    //                     date: post.date,
+    //                     content: post.content
+    //                     // Add other properties as needed
+    //                 };
+
+    //                 inventoryArray.push(postData);
+    //             });
+
+    //             // response.render('pages/posts', {
+    //             //     inventoryArray: inventoryArray
+    //             // });
+
+    //             response.render('pages/location1', {
+    //                 inventoryArray: inventoryArray
+    //             });
+    //         }
+    //     });
+    // },
 
     post_detail: (request, response) => {
         const { _id } = request.params;

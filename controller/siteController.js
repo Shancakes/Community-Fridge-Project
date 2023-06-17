@@ -43,17 +43,17 @@ module.exports = {
     },
 
     location3: (request, response) => {
-        response.render('pages/location2', {
+        response.render('pages/location3', {
         });
     },
 
     location4: (request, response) => {
-        response.render('pages/location2', {
+        response.render('pages/location4', {
         });
     },
 
     location5: (request, response) => {
-        response.render('pages/location2', {
+        response.render('pages/location5', {
         });
     },
 
@@ -87,26 +87,21 @@ module.exports = {
     // },
 
     signup_post: (request, response) => {
-        // added in Code Along - differs from slides
         const { username, password } = request.body;
         const newUser = new User({
             username: username,
             password: password
         });
-        newUser.save();
-        response.redirect('/login');
-        User.register({ username: username }, password, (error, user) => {
+
+        User.register(newUser, password, (error, user) => {
             if (error) {
                 console.log(error);
                 response.redirect('/signup');
-                // check the routes folder to check --> siteRouter --> redirect trigger --> GET
             } else {
-                // if they are successful 
                 passport.authenticate('local')(request, response, () => {
                     response.redirect('/login');
-                    // you created your account --> login --> GET
                 });
-            };
+            }
         });
     },
 
@@ -127,26 +122,17 @@ module.exports = {
                 return response.redirect('/locationMap');
             }
 
-            request.logIn(user, async (err) => {
+            request.logIn(user, (err) => {
                 if (err) {
                     console.error(err);
                     return next(err);
                 }
 
-                try {
-                    const { username } = user;
-
-                    // Update the logged-in user's posts with the associated username
-                    await Post.updateMany({ userId: user._id }, { $set: { username } });
-
-                    return response.redirect('/locationMap');
-                } catch (error) {
-                    console.error(error);
-                    return next(error);
-                }
+                return response.redirect('/locationMap');
             });
         })(request, response, next);
     },
+
 
     // googleId = request.body.googleId;
     // const { username, password, googleId } = request.body;
