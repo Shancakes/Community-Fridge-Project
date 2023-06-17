@@ -2,34 +2,35 @@
     <%- include('../partials/nav') -%>
 
 
-        <section class="main-content" id="main-content">
-            <div class="home-container">
+        <div class="home-container">
 
 
-                <!-- <div class="map-container"> -->
-                <div class="map-container">
-                    <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
-                    <% for (post of inventoryArray) { %>
+            <!-- <div class="map-container"> -->
+            <div class="map-container">
+                <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
+                <% for (post of inventoryArray) { %>
 
-                        <div class="post-container">
+                    <div class="post-container">
 
-                            <a href="/views/pages/posts <%= post._id %>" class="box">
-                            </a>
-                            <h4>
-                                <%= post.name %>
-                            </h4>
-                            <br>
 
-                            <%= post.date %>
-                                <p>
-                                    <%= post.content %>
-                                </p>
-                                </a>
-                        </div>
-                        <% } %>
-                </div>
 
+                        <a href="/views/pages/posts <%= post._id %>" class="box">
+                        </a>
+                        <h4>
+                            <%= post.name %>
+                        </h4>
+                        <br>
+
+                        <p>
+                            <%= post.content %>
+                        </p>
+                        </a>
+                    </div>
+                    <% } %>
             </div>
-        </section>
+
+        </div>
+
+
 
         <%- include('../partials/footer') -%>

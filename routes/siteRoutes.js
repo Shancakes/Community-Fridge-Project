@@ -40,21 +40,21 @@ router.route("/location2")
     .get(siteController.location2);
 
 router.route("/location3")
-    .get(siteController.location3);
+    .get(siteController.location3)
 
 router.route("/location4")
-    .get(siteController.location4);
+    .get(siteController.location4)
 
 router.route("/location5")
-    .get(siteController.location5);
+    .get(siteController.location5)
 
 
 
-router.route('/auth/google')
-    .get(siteController.google_get);
+// router.route('/auth/google')
+//     .get(siteController.google_get);
 
-router.route('/auth/google/admin')
-    .get(siteController.google_redirect_get);
+// router.route('/auth/google/admin')
+//     .get(siteController.google_redirect_get);
 
 
 module.exports = router;

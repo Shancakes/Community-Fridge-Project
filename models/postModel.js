@@ -12,7 +12,7 @@ const postSchema = new Schema({
 
     date: {
         type: Date,
-        // default: () => new Date()
+        date: new Date().toLocaleDateString()
     },
 
     content: {

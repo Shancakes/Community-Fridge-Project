@@ -3,10 +3,19 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const passportLocalMongoose = require('passport-local-mongoose');
+// const passportLocalMongoose = require('passport-local-mongoose');
 const app = express()
 
 
+
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Port 3000
 const PORT = process.env.PORT || 3000;
@@ -28,6 +37,7 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
@@ -38,8 +48,6 @@ app.use(session({
 app.use(passport.initialize());
 //Passport use session
 app.use(passport.session());
-
-
 
 const indexRoutes = require('./routes/indexRoutes');
 app.use('/', indexRoutes);

@@ -2,13 +2,12 @@
 const User = require('../models/userModel');
 const Post = require('../models/postModel');
 const passport = require('passport');
+const { request } = require('http');
 
 
 module.exports = {
-
     home_get: (request, response) => {
         response.render('pages/home', {
-            // signedIn: siteData.signedIn,
         });
     },
 
@@ -22,15 +21,18 @@ module.exports = {
         });
     },
 
+
+
     location1: (request, response) => {
         response.render('pages/location1', {
+
         }); //failsafe
-        // Post.find({}, (error, inventoryArray) => {
+        // Post.find({}, (error, allPosts) => {
         //     if (error) {
         //         return error;
         //     } else {
         //         response.render('pages/location1', {
-        //             inventoryArray: inventoryArray
+        //             inventoryArray: allPosts
         //         });
         //     }
         // })
@@ -57,20 +59,20 @@ module.exports = {
         });
     },
 
-    //MVP for all locations
+
     location1_post: (request, response) => {
         const { name, content } = request.body;
         const newPost = new Post({
             name: name,
-            rad1: rad1,
-            rad2: rad2,
+
             content: content
         });
-
-        newPost.save();
-
-        response.redirect("/location1");
-
+        newPost.save((error) => {
+            if (error) {
+                console.error(error);
+            }
+            response.redirect("/location1");
+        });
     },
 
     signup_get: (request, response) => {
@@ -78,13 +80,6 @@ module.exports = {
 
         });
     },
-
-    //Not the best, because we don't have salry hashbrowns
-    //nobody wants over salty hashbrowns
-    // signup_post: (request, response) => {
-
-
-    // },
 
     signup_post: (request, response) => {
         const { username, password } = request.body;
@@ -101,13 +96,14 @@ module.exports = {
                 passport.authenticate('local')(request, response, () => {
                     response.redirect('/login');
                 });
-            }
+            };
+
         });
     },
 
     login_get: (request, response) => {
         response.render('pages/login', {
-        });
+        })
     },
 
     login_post: (request, response, next) => {
@@ -122,28 +118,29 @@ module.exports = {
                 return response.redirect('/locationMap');
             }
 
-            request.logIn(user, (err) => {
+            request.logIn(user, async (err) => {
                 if (err) {
                     console.error(err);
                     return next(err);
                 }
 
-                return response.redirect('/locationMap');
+                try {
+                    const { username } = user;
+
+                    // Update the logged-in user's posts with the associated username
+                    await Post.updateMany({ userId: user._id }, { $set: { username } });
+
+                    return response.redirect('/locationMap');
+                } catch (error) {
+                    console.error(error);
+                    return next(error);
+                }
             });
         })(request, response, next);
     },
 
 
-    // googleId = request.body.googleId;
-    // const { username, password, googleId } = request.body;
-    // const user = new User({
-    //     username: username,
-    //     password: password,
-    //     googleId: googleId
-    //     });
 
-
-    // },
 
     logout: (request, response) => {
         // new code as of 6/2022 - the correct logout function
@@ -153,16 +150,8 @@ module.exports = {
             // redirect back to the homepage
             response.redirect('/');
         });
-    },
+    }
 
-    google_get: passport.authenticate('google', { scope: ['openid', 'profile', 'email'] }),
 
-    google_redirect_get: [
-        passport.authenticate('google', { failureRedirect: '/ login' }),
-        function (request, response) {
-            // Successful Authentication Authorization
-            response.redirect('/admin');
-        }
-    ]
+
 }
-
