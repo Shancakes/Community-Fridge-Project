@@ -7,10 +7,11 @@ router.route('/')
     .get(postController.all_post)
     .post(postController.post_create_post)
 
+
 router.route('/:_id')
     .get(postController.post_detail)
     .put(postController.post_update_put)
-    .delete(postController.post_delete)
+    .delete(postController.post_delete);
 
 
 

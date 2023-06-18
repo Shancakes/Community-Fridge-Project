@@ -388,7 +388,6 @@ label {
     border: none;
     opacity: 0.8;
     margin: 10px;
-
 }
 
 .login-container button a {
@@ -402,6 +401,7 @@ label {
     box-shadow: 0px 0px 0px 2px var(--darkblue) inset;
 
 }
+
 
 /* ************************************************************ */
 /* ****************--LOCATION NAVIGATION-- *********************/
@@ -568,6 +568,10 @@ label {
 
 /* Posts */
 
+.posts-button-container {
+    display: flex;
+    justify-content: center;
+}
 
 .textbox {
     resize: none;
@@ -631,7 +635,25 @@ label {
 }
 
 
+.delete-button {
+    padding: 15px 10px;
+    font-family: 'Sora', sans-serif;
+    background-color: var(--darksand);
+    color: var(--darkblue);
+    border: none;
+    opacity: 0.8;
+    margin: 10px;
+}
 
+.delete-button a {
+    color: var(--darkblue);
+}
+
+.delete-button a:hover {
+
+    color: var(--darkblue);
+    box-shadow: 0px 0px 0px 2px var(--darkblue) inset;
+}
 
 
 /* ************************************************************ */

@@ -11,26 +11,47 @@
                 <% for (post of inventoryArray) { %>
 
                     <div class="post-container">
+                        <form action="/posts/<%= post._id %>">
 
 
+                            <a href="/views/pages/posts <%= post._id %>" class="box">
+                            </a>
+                            <h4>
+                                <%= post.name %>
+                            </h4>
+                            <br>
 
-                        <a href="/views/pages/posts <%= post._id %>" class="box">
-                        </a>
-                        <h4>
-                            <%= post.name %>
-                        </h4>
-                        <br>
-
-                        <p>
-                            <%= post.content %>
-                        </p>
-                        </a>
+                            <p>
+                                <%= post.content %>
+                            </p>
+                            <div class="posts-button-container">
+                                <!-- <button type="submit" class="edit-button">Edit</button> -->
+                                <button type="button" class="delete-button"
+                                    onclick="deletePost('<%= post._id %>')">Delete</button>
+                            </div>
+                        </form>
                     </div>
                     <% } %>
             </div>
 
         </div>
 
-
+        <script>
+            function deletePost(postId) {
+                fetch(`/posts/${postId}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            location.reload(); // Reload the page after successful deletion
+                        } else {
+                            console.error('Error deleting post');
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        </script>
 
         <%- include('../partials/footer') -%>

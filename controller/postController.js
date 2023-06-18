@@ -68,10 +68,12 @@ module.exports = {
         const { _id } = request.params;
         Post.deleteOne({ _id: _id }, error => {
             if (error) {
-                return error;
+                console.error(error);
+                // Handle the error appropriately
             } else {
-                response.redirect('/posts')
+                response.sendStatus(200); // Sending a success status code
             }
         });
     }
 }
+
