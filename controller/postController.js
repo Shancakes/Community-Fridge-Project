@@ -16,13 +16,10 @@ module.exports = {
                 response.render('pages/posts', {
                     inventoryArray: reversedPosts
                 });
+
             }
-
-
         })
     },
-
-
 
     post_detail: (request, response) => {
         const { _id } = request.params;
@@ -36,6 +33,7 @@ module.exports = {
             }
         })
     },
+
     post_create_post: (request, response) => {
         const { name, date, content } = request.body;
         const newPost = new Post({
@@ -46,8 +44,8 @@ module.exports = {
         newPost.save();
 
         response.redirect("/location1");
-
     },
+
     post_update_put: (request, response) => {
         const { _id } = request.params;
         const { name, date, content } = request.body;
@@ -76,5 +74,4 @@ module.exports = {
             }
         });
     }
-
 }

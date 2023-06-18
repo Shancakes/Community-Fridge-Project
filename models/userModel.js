@@ -1,4 +1,3 @@
-//DO NOT TOUCH
 const mongoose = require('mongoose');
 const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -30,15 +29,7 @@ userSchema.plugin(mongooseFindOrCreate);
 
 const User = mongoose.model('User', userSchema);
 
-
 passport.use(User.createStrategy());
-
-// async function runUsers() {
-//     await mongoose.connect(`${process.env.MONGODB_URL}`)
-//     mongoose.model('Users', userSchema);
-//     await mongoose.model('Users').find();
-// }
-// runUsers();
 
 passport.serializeUser(function (user, cb) {
     process.nextTick(function () {
@@ -58,9 +49,10 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3000/auth/google/locationMap"
 },
     function (accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({ googleID: profile.id }, function (err, user) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
             return cb(err, user);
         });
-    }));
+    }
+));
 
 module.exports = User;

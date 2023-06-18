@@ -83,11 +83,46 @@
 
             <div class="map-container">
                 <h1>Updates And Feedback About This Fridge:</h1>
-                <%- include('../partials/postcreate') -%>
+                <form id="post-form" method="POST" action="/posts">
+                    <label for="name" class="name" id="name">Name </label>
+                    <br>
+                    <input type="text" id="name" name="name" class="name" required>
+
+                    <p>
+                        <label for="content">Content</label>
+                        <br>
+                        <textarea id="content" name="content" class="textbox" required></textarea>
+                    </p>
+                    <input type="submit" id="submit-post" class="submit" value="Submit Post">
+
+                </form>
+            </div>
+
+            <div class="map-container">
+
+                <!-- <div class="post-container"> -->
+                <ul class="location1-post-list">
+                    <% inventoryArray.forEach((post)=> { %>
+                        <li class="post-container">
+                            <p>
+                                <%= post.name %>
+                                    <br>
+                                    <%= post.date %>
+                            </p>
+                            <p>
+                                <%= post.content %>
+                            </p>
+
+
+                        </li>
+                        <% }) %>
+                </ul>
+                <!-- </div> -->
+
             </div>
 
 
-            <div class="map-container">
+            <!-- <div class="map-container">
 
 
                 <div class="forum-posts">
@@ -110,8 +145,8 @@
                             the
                             shelves, and I could use some for my cake recipe Thank you!</p>
                     </div>
-                </div>
-            </div>
+                </div> 
+            </div> -->
 
 
 

@@ -480,7 +480,7 @@ label {
     border: 4px solid var(--darkblue);
     background-color: white;
     border-radius: 10px;
-    margin: 3vh auto;
+    margin: 1vh auto;
     padding: 10px;
     width: 80%;
     max-width: 800px;
@@ -589,6 +589,23 @@ label {
     margin: 2rem;
     flex-direction: column;
     padding: 1rem;
+}
+
+.location1-post-list {
+
+    display: flex;
+    margin: 2rem;
+    padding: 1rem;
+    flex-direction: column-reverse;
+}
+
+.location1-post-list-li {
+    border-radius: 1%;
+    border: 3px solid var(--darkblue);
+    box-shadow: 5px 5px var(--darkblue);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 #name,

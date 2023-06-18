@@ -21,22 +21,51 @@ module.exports = {
         });
     },
 
+    createPost_get: (request, response) => {
+        response.render('pages/createPost', {
+        });
+    },
 
+    createPost_post: (request, response) => {
+        const { name, content } = request.body;
+        const newPost = new Post({
+            name: name,
+            content: content
+        });
+        newPost.save((error) => {
+            if (error) {
+                console.error(error);
+            }
+            response.redirect("/location1"); // Redirect to location1 page
+        });
+    },
+
+    // location1: (request, response) => {
+    //     response.render('pages/location1', {
+
+    //     }); //failsafe
+    //     Post.find({}, (error, allPosts) => {
+    //         if (error) {
+    //             return error;
+    //         } else {
+    //             response.render('pages/location1', {
+    //                 inventoryArray: allPosts
+    //             });
+    //         }
+    //      })
+    //     location1-loop is connected here, come back when mongoDB is connected
+    // },
 
     location1: (request, response) => {
-        response.render('pages/location1', {
-
-        }); //failsafe
-        // Post.find({}, (error, allPosts) => {
-        //     if (error) {
-        //         return error;
-        //     } else {
-        //         response.render('pages/location1', {
-        //             inventoryArray: allPosts
-        //         });
-        //     }
-        // })
-        //location1-loop is connected here, come back when mongoDB is connected
+        Post.find({}, (error, allPosts) => {
+            if (error) {
+                console.error(error);
+            } else {
+                response.render('pages/location1', {
+                    inventoryArray: allPosts
+                });
+            }
+        });
     },
 
     location2: (request, response) => {
@@ -60,20 +89,20 @@ module.exports = {
     },
 
 
-    location1_post: (request, response) => {
-        const { name, content } = request.body;
-        const newPost = new Post({
-            name: name,
+    // location1_post: (request, response) => {
+    //     const { name, content } = request.body;
+    //     const newPost = new Post({
+    //         name: name,
 
-            content: content
-        });
-        newPost.save((error) => {
-            if (error) {
-                console.error(error);
-            }
-            response.redirect("/location1");
-        });
-    },
+    //         content: content
+    //     });
+    //     newPost.save((error) => {
+    //         if (error) {
+    //             console.error(error);
+    //         }
+    //         response.redirect("/location1");
+    //     });
+    // },
 
     signup_get: (request, response) => {
         response.render('pages/signup', {
@@ -150,7 +179,18 @@ module.exports = {
             // redirect back to the homepage
             response.redirect('/');
         });
-    }
+    },
+
+    //Google OAuth
+    google_get: passport.authenticate('google', { scope: ['openid', 'profile', 'email'] }),
+
+    google_redirect_get: [
+        passport.authenticate('google', { failureRedirect: '/login' }),
+        function (request, response) {
+            // Successful authentication, redirect home.
+            response.redirect('/locationMap');
+        }
+    ]
 
 
 
