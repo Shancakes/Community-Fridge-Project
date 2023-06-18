@@ -8,7 +8,7 @@ const app = express()
 
 
 app.use(session({
-    secret: process.env.SECRET_KEY,
+    secret: "keyboard-cat",
     resave: false,
     saveUninitialized: false
 }))
