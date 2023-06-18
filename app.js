@@ -7,7 +7,6 @@ const passport = require('passport');
 const app = express()
 
 
-
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
@@ -36,13 +35,6 @@ app.use(methodOverride('_method'));
 //Adding functionality to app.js
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
-app.use(session({
-    secret: process.env.SECRET_KEY,
-    resave: false,
-    saveUninitialized: false
-}));
 
 //Initialize Passport
 app.use(passport.initialize());
