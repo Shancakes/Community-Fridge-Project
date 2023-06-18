@@ -577,10 +577,7 @@ label {
     font-family: 'Quicksand', sans-serif;
 }
 
-
-
 .post-container {
-
     border-radius: 1%;
     border: 3px solid var(--darkblue);
     box-shadow: 5px 5px var(--darkblue);
@@ -591,7 +588,6 @@ label {
 }
 
 .location1-post-list {
-
     display: flex;
     padding: 1rem;
     flex-direction: column-reverse;
