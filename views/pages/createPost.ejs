@@ -1,0 +1,27 @@
+<%- include('../partials/head') -%>
+    <%- include('../partials/nav') -%>
+
+        <div class="home-container">
+            <div class="map-container">
+                <h1>Update And Feedback About A Fridge:</h1>
+                <div class="post-container">
+
+                    <form id="post-form" method="POST" action="/posts">
+                        <label for="name" class="name" id="name">Name </label>
+                        <br>
+                        <input type="text" id="name" name="name" class="name" required>
+                        <p>
+                            <label for="content">Content</label>
+                            <br>
+                            <textarea id="content" name="content" class="textbox" required></textarea>
+                        </p>
+                        <input type="submit" id="submit-post" class="submit" value="Submit Post">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        <%- include('../partials/footer') -%>

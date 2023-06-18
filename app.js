@@ -6,12 +6,12 @@ const passport = require('passport');
 // const passportLocalMongoose = require('passport-local-mongoose');
 const app = express()
 
-
+//require secret key
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false
-}))
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -83,37 +83,37 @@
 
             <div class="map-container">
                 <h1>Updates And Feedback About This Fridge:</h1>
-                <%- include('../partials/postcreate') -%>
-            </div>
+                <form id="post-form" method="POST" action="/posts">
+                    <label for="name" class="name" id="name">Name </label>
+                    <br>
+                    <input type="text" id="name" name="name" class="name" required>
 
+                    <p>
+                        <label for="content">Content</label>
+                        <br>
+                        <textarea id="content" name="content" class="textbox" required></textarea>
+                    </p>
+                    <input type="submit" id="submit-post" class="submit" value="Submit Post">
+
+                </form>
+            </div>
 
             <div class="map-container">
 
+                <ul class="location1-post-list">
+                    <% inventoryArray.forEach((post)=> { %>
+                        <li class="post-container">
+                            <p>
+                                <%= post.name %>
+                                    <br>
+                                    <%= post.date %>
+                            </p>
+                            <p>
+                                <%= post.content %>
+                            </p>
+                        </li>
+                        <% }) %>
+                </ul>
 
-                <div class="forum-posts">
-                    <div class="post-container">
-                        <h3>Gabriel</h3>
-
-                        <p><a href="/post"></a>I have updated the fridge with some new items! Lots of fresh produce, get
-                            it before
-                            it is
-                            gone!
-                            The
-                            pantry could use some shelves cleaned. </p>
-                    </div>
-                    <div class="post-container">
-
-                        <h3>Naomi</h3>
-                        <p>Hi everyone, could I request some eggs for our next donation? I noticed it keeps
-                            flying
-                            off
-                            the
-                            shelves, and I could use some for my cake recipe Thank you!</p>
-                    </div>
-                </div>
             </div>
-
-
-
-
             <%- include('../partials/footer') -%>
