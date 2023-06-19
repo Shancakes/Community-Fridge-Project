@@ -340,7 +340,6 @@ i {
 .login-form-container {
     width: 100%;
     font-family: 'Sora', sans-serif;
-
 }
 
 
@@ -380,6 +379,7 @@ label {
 }
 
 /* styling the login button */
+
 .login-container button {
     padding: 15px 10px;
     font-family: 'Sora', sans-serif;
@@ -400,6 +400,15 @@ label {
     color: var(--darkblue);
     box-shadow: 0px 0px 0px 2px var(--darkblue) inset;
 
+}
+
+.logoutUname {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    color: var(--darkblue);
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 
@@ -573,6 +582,12 @@ label {
     justify-content: center;
 }
 
+.post-editor {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .textbox {
     resize: none;
     width: 97%;
@@ -661,16 +676,32 @@ label {
 /* **************************************************************/
 /* ************************************************************ */
 
-.signup-radio {
-    accent-color: var(--darkblue);
-    display: flex;
-    align-items: center;
-    margin: auto;
+
+.signupButton {
+    font-family: 'Sora', sans-serif;
+    background-color: var(--darksand);
+    color: var(--darkblue);
+    border: none;
+    opacity: 0.8;
+
+    transition-duration: 0.4s;
+
+    width: 100%;
+
 }
 
-.signup-radio input {
-    width: 20px;
-    margin: 0px 10px;
+.signupButton a {
+    color: var(--darkblue);
+    display: flex;
+    align-items: center;
+}
+
+
+.signupButton:hover {
+    opacity: 1;
+    color: var(--darkblue);
+    box-shadow: 0px 0px 0px 2px var(--darkblue) inset;
+
 }
 
 .login-container p {

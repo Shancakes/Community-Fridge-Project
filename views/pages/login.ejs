@@ -13,41 +13,34 @@
 
                     <div class="login-container">
 
-                        <!-- displaying login or logout depending if user is logged in or not -->
+                        <% if (logoutButton) { %>
+                            <div class="logoutUname">
+                                <p>You are signed in as <%= username %>
+                                </p>
+                            </div>
+                            <button><a href="/logout">Logout</a></button>
+                            <% } else { %>
+                                <!-- Render the login form -->
+                                <form method="POST" action="/login">
 
-                        <!-- <ul class="nav navbar-nav navbar-right">
-                                {{#if currentUser}}
-                                  <li><a href="/logout">Logout</a></li>
-                                {{else}}
-                         <label for="username">Username:</label>
-                            <input type="text" placeholder="Enter Username" name="username" required>
+                                    <label for="username">Username:</label>
+                                    <input type="text" placeholder="Enter Username" name="username" required>
 
-                            <label for="password">Password:</label>
-                            <input type="password" placeholder="Enter Password" name="password" required>
+                                    <label for="password">Password:</label>
+                                    <input type="password" placeholder="Enter Password" name="password" minlength="4"
+                                        maxlength="16" required>
 
-                            <button type="submit">LOG IN</button>
+                                    <button type="submit">Login</button>
+                                    <br>
+                                    <button><a href="/auth/google">LOG IN WITH
+                                            GOOGLE</a></button>
+                                    <h1>
+                                    </h1>
+                                    <button><a href="signup">SIGN UP</a></button>
+                                </form>
+                                <% } %>
 
-                  
 
-                            <h1>
-                            </h1>
-                            <button><a href="signup">SIGN UP</a>
-                              </ul> -->
-
-                        <label for="username">Username:</label>
-                        <input type="text" placeholder="Enter Username" name="username" required>
-
-                        <label for="password">Password:</label>
-                        <input type="password" placeholder="Enter Password" name="password" minlength="4" maxlength="16"
-                            required>
-
-                        <button type="submit">LOG IN</button>
-                        <br>
-                        <button><a href="/auth/google">LOG IN WITH
-                                GOOGLE</a></button>
-                        <h1>
-                        </h1>
-                        <button><a href="signup">SIGN UP</a>
                     </div>
                 </form>
                 </main>

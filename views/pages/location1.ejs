@@ -84,18 +84,21 @@
             <div class="map-container">
                 <h1>Updates And Feedback About This Fridge:</h1>
                 <form id="post-form" method="POST" action="/posts">
-                    <label for="name" class="name" id="name">Name </label>
-                    <br>
-                    <input type="text" id="name" name="name" class="name" required>
-
-                    <p>
-                        <label for="content">Content</label>
+                    <% if (username) { %>
+                        <label for="name" class="name" id="name">You are posting as <%= username %></label>
+                        <input type="hidden" name="name" value="<%= username %>">
                         <br>
-                        <textarea id="content" name="content" class="textbox" required></textarea>
-                    </p>
-                    <input type="submit" id="submit-post" class="submit" value="Submit Post">
-
+                        <p>
+                            <label for="content">Content</label>
+                            <br>
+                            <textarea id="content" name="content" class="textbox" required></textarea>
+                        </p>
+                        <input type="submit" id="submit-post" class="submit" value="Submit Post">
+                        <% } else { %>
+                            <button class="home-button"><a href="/login">Log in to post</a></button>
+                            <% } %>
                 </form>
+
             </div>
 
             <div class="map-container">

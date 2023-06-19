@@ -1,57 +1,57 @@
 <%- include('../partials/head') -%>
-    <%- include('../partials/nav') -%>
+
+    <div class="home-container">
+        <div class="map-container">
+            <h1>Post Management</h1>
+
+            <% for (post of inventoryArray) { %>
+                <div class="post-container">
+                    <div class="post-content">
+                        <h4>
+                            <%= post.name %>
+                        </h4>
+                        <p>
+                            <%= post.content %>
+                        </p>
+                    </div>
+                    <div class="posts-button-container">
+                        <button type="button" class="submit" onclick="toggleEditForm('<%= post._id %>')">Edit</button>
+                        <button type="button" class="submit" onclick="deletePost('<%= post._id %>')">Delete</button>
+                    </div>
 
 
-        <div class="home-container">
-
-
-            <!-- <div class="map-container"> -->
-            <div class="map-container">
-                <!-- Using a for...of loop, loop through the inventoryArray and display each book -->
-                <% for (post of inventoryArray) { %>
-
-                    <div class="post-container">
-                        <form action="/posts/<%= post._id %>">
-
-
-                            <a href="/views/pages/posts <%= post._id %>" class="box">
-                            </a>
-                            <h4>
-                                <%= post.name %>
-                            </h4>
-                            <br>
-
-                            <p>
-                                <%= post.content %>
-                            </p>
-                            <div class="posts-button-container">
-                                <!-- <button type="submit" class="edit-button">Edit</button> -->
-                                <button type="button" class="delete-button"
-                                    onclick="deletePost('<%= post._id %>')">Delete</button>
-                            </div>
+                    <div class="post-editor" id="post-editor-<%= post._id %>" style="display: none;">
+                        <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+                            <input type="text" name="name" value="<%= post.name %>" required>
+                            <textarea name="content" required><%= post.content %></textarea>
+                            <button type="submit">Update</button>
                         </form>
                     </div>
-                    <% } %>
-            </div>
-
+                </div>
+                <% } %>
         </div>
+    </div>
 
-        <script>
-            function deletePost(postId) {
-                fetch(`/posts/${postId}`, {
-                    method: 'DELETE'
+    <script>
+        function toggleEditForm(postId) {
+            const postEditor = document.getElementById(`post-editor-${postId}`);
+            postEditor.style.display = postEditor.style.display === 'none' ? 'block' : 'none';
+        }
+        function deletePost(postId) {
+            fetch(`/posts/${postId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.error('Error deleting post');
+                    }
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            location.reload(); // Reload the page after successful deletion
-                        } else {
-                            console.error('Error deleting post');
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-        </script>
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script>
 
-        <%- include('../partials/footer') -%>
+    <%- include('../partials/footer') -%>

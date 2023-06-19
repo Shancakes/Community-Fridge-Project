@@ -17,6 +17,7 @@ router.route('/home')
 router.route("/locationMap")
     .get(siteController.locationMap_get);
 
+
 router.route("/resources")
     .get(siteController.resources_get)
 
@@ -28,10 +29,15 @@ router.route("/login")
     .get(siteController.login_get)
     .post(siteController.login_post);
 
+router.route('/logout')
+    .get(siteController.logout);
+
 router.route("/createPost")
     .get(siteController.createPost_get)
     .post(siteController.createPost_post);
 
+router.route('editPost')
+    .get(siteController.editPost_get);
 //Location Routes
 router.route("/location1")
     .get(siteController.location1)

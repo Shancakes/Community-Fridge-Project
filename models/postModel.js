@@ -5,9 +5,7 @@ const postSchema = new Schema({
 
     name: {
         type: String,
-        required: [true, 'Please type your name.'],
-        min: [2, 'Please type your full name.'],
-        max: [100, 'Please use less than 100 characters.']
+
     },
 
     date: {

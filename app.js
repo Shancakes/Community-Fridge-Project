@@ -44,6 +44,12 @@ app.use(passport.session());
 const indexRoutes = require('./routes/indexRoutes');
 app.use('/', indexRoutes);
 
+//allow username to be read on all pages (for navbar)
+app.use((req, res, next) => {
+    res.locals.username = req.user ? req.user.username : null;
+    next();
+});
+
 
 require('./config/connection');
 

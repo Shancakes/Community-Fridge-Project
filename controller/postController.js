@@ -74,6 +74,19 @@ module.exports = {
                 response.sendStatus(200); // Sending a success status code
             }
         });
+    },
+
+    editPost_get: (request, response) => {
+        const { _id } = request.params;
+        Post.findOne({ _id: _id }, (error, foundPost) => {
+            if (error) {
+                console.error(error);
+                // Handle the error appropriately
+            } else {
+                response.render('pages/editPost', {
+                    inventoryItem: foundPost
+                });
+            }
+        });
     }
 }
-

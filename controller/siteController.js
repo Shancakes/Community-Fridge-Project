@@ -1,28 +1,42 @@
-//DO NOT TOUCH (unless youre adding more locations)
 const User = require('../models/userModel');
 const Post = require('../models/postModel');
 const passport = require('passport');
 const { request } = require('http');
 
-
 module.exports = {
     home_get: (request, response) => {
         response.render('pages/home', {
+            username: request.user ? request.user.username : null
         });
     },
 
+    // posts_get: (request, response) => {
+    //     response.render('pages/posts', {
+    //         username: request.user ? request.user.username : null
+    //     });
+    // },
+
     locationMap_get: (request, response) => {
         response.render('pages/locationMap', {
+            username: request.user ? request.user.username : null
         });
     },
 
     resources_get: (request, response) => {
         response.render('pages/resources', {
+            username: request.user ? request.user.username : null
         });
     },
 
     createPost_get: (request, response) => {
         response.render('pages/createPost', {
+            username: request.user ? request.user.username : null
+        });
+    },
+
+    editPost_get: (request, response) => {
+        response.render('pages/editPost', {
+            username: request.user ? request.user.username : null
         });
     },
 
@@ -40,21 +54,23 @@ module.exports = {
         });
     },
 
-    // location1: (request, response) => {
-    //     response.render('pages/location1', {
+    post_update_put: (request, response) => {
+        const { _id } = request.params;
+        const { name, date, content } = request.body;
+        Post.findByIdAndUpdate(_id, {
+            name: name,
+            date: date,
+            content: content
+        }, { new: true }, (error, updatedPost) => {
+            if (error) {
+                console.error(error);
+                // Handle the error appropriately
+            } else {
+                response.redirect('/admin-posts');
+            }
+        });
+    },
 
-    //     }); //failsafe
-    //     Post.find({}, (error, allPosts) => {
-    //         if (error) {
-    //             return error;
-    //         } else {
-    //             response.render('pages/location1', {
-    //                 inventoryArray: allPosts
-    //             });
-    //         }
-    //      })
-    //     location1-loop is connected here, come back when mongoDB is connected
-    // },
 
     location1: (request, response) => {
         Post.find({}, (error, allPosts) => {
@@ -62,7 +78,8 @@ module.exports = {
                 console.error(error);
             } else {
                 response.render('pages/location1', {
-                    inventoryArray: allPosts
+                    inventoryArray: allPosts,
+                    username: request.user ? request.user.username : null
                 });
             }
         });
@@ -70,43 +87,31 @@ module.exports = {
 
     location2: (request, response) => {
         response.render('pages/location2', {
+            username: request.user ? request.user.username : null
         });
     },
 
     location3: (request, response) => {
         response.render('pages/location3', {
+            username: request.user ? request.user.username : null
         });
     },
 
     location4: (request, response) => {
         response.render('pages/location4', {
+            username: request.user ? request.user.username : null
         });
     },
 
     location5: (request, response) => {
         response.render('pages/location5', {
+            username: request.user ? request.user.username : null
         });
     },
 
-
-    // location1_post: (request, response) => {
-    //     const { name, content } = request.body;
-    //     const newPost = new Post({
-    //         name: name,
-
-    //         content: content
-    //     });
-    //     newPost.save((error) => {
-    //         if (error) {
-    //             console.error(error);
-    //         }
-    //         response.redirect("/location1");
-    //     });
-    // },
-
     signup_get: (request, response) => {
         response.render('pages/signup', {
-
+            username: request.user ? request.user.username : null
         });
     },
 
@@ -125,14 +130,27 @@ module.exports = {
                 passport.authenticate('local')(request, response, () => {
                     response.redirect('/login');
                 });
-            };
-
+            }
         });
     },
 
     login_get: (request, response) => {
-        response.render('pages/login', {
-        })
+        const { user } = request;
+        const username = user ? user.username : null;
+
+        if (request.isAuthenticated()) {
+            // User is authenticated, render view with logout button
+            response.render('pages/login', {
+                logoutButton: true,
+                username: username
+            });
+        } else {
+            // User is not authenticated, render view without logout button
+            response.render('pages/login', {
+                logoutButton: false,
+                username: username
+            });
+        }
     },
 
     login_post: (request, response, next) => {
@@ -144,7 +162,7 @@ module.exports = {
 
             if (!user) {
                 console.log(info.message);
-                return response.redirect('/locationMap');
+                return response.redirect('/login');
             }
 
             request.logIn(user, async (err) => {
@@ -159,7 +177,7 @@ module.exports = {
                     // Update the logged-in user's posts with the associated username
                     await Post.updateMany({ userId: user._id }, { $set: { username } });
 
-                    return response.redirect('/locationMap');
+                    return response.redirect('/login');
                 } catch (error) {
                     console.error(error);
                     return next(error);
@@ -168,16 +186,19 @@ module.exports = {
         })(request, response, next);
     },
 
-
-
-
     logout: (request, response) => {
-        // new code as of 6/2022 - the correct logout function
         request.logout(function (err) {
-            // destroy the session for the user
-            if (err) { return next(err); }
-            // redirect back to the homepage
-            response.redirect('/');
+            if (err) {
+                console.error('Error logging out:', err);
+                // Handle the error appropriately
+            }
+            request.session.destroy(function (err) {
+                if (err) {
+                    console.error('Error destroying session:', err);
+                    // Handle the error appropriately
+                }
+                response.redirect('/login'); // Redirect to the login page or any other appropriate page
+            });
         });
     },
 
@@ -191,7 +212,4 @@ module.exports = {
             response.redirect('/locationMap');
         }
     ]
-
-
-
-}
+};
