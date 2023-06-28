@@ -48,5 +48,9 @@ To Visit App:
 localhost:3000/home
 
 
-
+<h2>Updates and Information</h2>
+-administrative controls to edit and delete post content.
+-updated login and logout functionality display on navigation and posting/login
+-displaying username upon login 
+-logout functionality from nav
 
