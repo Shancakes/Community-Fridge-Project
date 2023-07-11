@@ -52,5 +52,5 @@ localhost:3000/home
 -administrative controls to edit and delete post content.
 -updated login and logout functionality display on navigation and posting/login
 -displaying username upon login 
--logout functionality from nav
+-logout functionality from nav -created administrative posts page with CRUD operations to manage forum posts
 
